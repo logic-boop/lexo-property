@@ -1,19 +1,19 @@
 const Property = require("../models/Property");
 
-// Get all properties
+// GET all properties
 const getProperties = async (req, res) => {
   try {
     const properties = await Property.find();
 
-    res.status(200).json(properties);
+    res.json(properties);
   } catch (error) {
     res.status(500).json({
-      message: "Failed to fetch properties",
+      message: error.message,
     });
   }
 };
 
-// Get one property
+// GET single property
 const getProperty = async (req, res) => {
   try {
     const property = await Property.findById(req.params.id);
@@ -24,10 +24,57 @@ const getProperty = async (req, res) => {
       });
     }
 
-    res.status(200).json(property);
+    res.json(property);
   } catch (error) {
     res.status(500).json({
-      message: "Server error",
+      message: error.message,
+    });
+  }
+};
+
+// CREATE property
+const createProperty = async (req, res) => {
+  try {
+    const property = await Property.create(req.body);
+
+    res.status(201).json(property);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+// UPDATE property
+const updateProperty = async (req, res) => {
+  try {
+    const property = await Property.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
+
+    res.json(property);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+// DELETE property
+const deleteProperty = async (req, res) => {
+  try {
+    await Property.findByIdAndDelete(req.params.id);
+
+    res.json({
+      message: "Property deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
     });
   }
 };
@@ -35,4 +82,7 @@ const getProperty = async (req, res) => {
 module.exports = {
   getProperties,
   getProperty,
+  createProperty,
+  updateProperty,
+  deleteProperty,
 };

@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+const path = require("path");
+
 const connectDB = require("./config/db");
 const propertyRoutes = require("./routes/propertyRoutes");
 
@@ -15,6 +17,13 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+app.use(
+    "/uploads",
+    express.static(
+        path.join(__dirname,"public/uploads")
+    )
+);
 
 // Home Route
 app.get("/", (req, res) => {
