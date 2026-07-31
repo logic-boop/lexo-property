@@ -854,3 +854,101 @@ th{
 font-weight:700;
 background:#f3f4f6;
 }
+
+/* ==========================
+   ADD PROPERTY FORM
+========================== */
+
+.admin-section{
+    background:#ffffff;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+    margin-top:40px;
+}
+
+.admin-section h2{
+    font-size:2rem;
+    font-weight:800;
+    color:#111827;
+    margin-bottom:25px;
+}
+
+#property-form{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+#property-form input,
+#property-form textarea{
+    width:100%;
+    padding:16px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    font-size:16px;
+    font-family:inherit;
+    outline:none;
+    transition:.3s;
+}
+
+#property-form input:focus,
+#property-form textarea:focus{
+    border-color:#22e52f;
+    box-shadow:0 0 0 3px rgba(34,229,47,.15);
+}
+
+#property-form textarea{
+    grid-column:1 / -1;
+    resize:vertical;
+    min-height:140px;
+}
+
+#property-form button{
+    grid-column:1 / -1;
+    background:#22e52f;
+    color:#fff;
+    border:none;
+    padding:18px;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#property-form button:hover{
+    background:#18c724;
+}
+
+@media(max-width:768px){
+
+    #property-form{
+        grid-template-columns:1fr;
+    }
+
+    #property-form textarea,
+    #property-form button{
+        grid-column:auto;
+    }
+
+}
+.edit-btn,
+.delete-btn{
+    border:none;
+    padding:8px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+    margin-right:8px;
+}
+
+.edit-btn{
+    background:#facc15;
+    color:#111827;
+}
+
+.delete-btn{
+    background:#ef4444;
+    color:#ffffff;
+}
