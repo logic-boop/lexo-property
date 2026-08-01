@@ -5,14 +5,14 @@ const propertyList = document.getElementById("property-list");
 
 // Load all properties
 async function loadProperties() {
-    try {
-        const response = await fetch(API_URL);
-        const properties = await response.json();
+  try {
+    const response = await fetch(API_URL);
+    const properties = await response.json();
 
-        propertyList.innerHTML = "";
+    propertyList.innerHTML = "";
 
-        properties.forEach((property) => {
-            propertyList.innerHTML += `
+    properties.forEach((property) => {
+      propertyList.innerHTML += `
                 <tr>
                     <td>${property.title}</td>
                     <td>${property.location}</td>
@@ -39,86 +39,73 @@ async function loadProperties() {
                     </td>
                 </tr>
             `;
-        });
-
-    } catch (error) {
-        console.error(error);
-    }
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // Add Property
 form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    e.preventDefault();
+  const formData = new FormData();
 
-    const property = {
+  formData.append("title", document.getElementById("title").value);
 
-        title: document.getElementById("title").value,
-        price: Number(document.getElementById("price").value),
-        location: document.getElementById("location").value,
-        type: document.getElementById("type").value,
-        bedrooms: Number(document.getElementById("bedrooms").value),
-        bathrooms: Number(document.getElementById("bathrooms").value),
-        image: document.getElementById("image").value,
-        description: document.getElementById("description").value,
-        featured: true
+  formData.append("price", document.getElementById("price").value);
 
-    };
+  formData.append("location", document.getElementById("location").value);
 
-    try {
+  formData.append("type", document.getElementById("type").value);
 
-        const response = await fetch(API_URL, {
+  formData.append("bedrooms", document.getElementById("bedrooms").value);
 
-            method: "POST",
+  formData.append("bathrooms", document.getElementById("bathrooms").value);
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+  formData.append("description", document.getElementById("description").value);
 
-            body: JSON.stringify(property)
+  formData.append("status", document.getElementById("status").value);
 
-        });
+  formData.append("image", document.getElementById("image").files[0]);
 
-        if (!response.ok) {
-            throw new Error("Failed to add property");
-        }
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
 
-        alert("Property added successfully!");
+      body: formData,
+    });
 
-        form.reset();
-
-        loadProperties();
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert("Something went wrong.");
-
+    if (!response.ok) {
+      throw new Error("Failed to add property");
     }
 
+    alert("Property added successfully!");
+
+    form.reset();
+
+    loadProperties();
+  } catch (error) {
+    console.error(error);
+
+    alert("Something went wrong.");
+  }
 });
 
 // Delete Property
 async function deleteProperty(id) {
+  if (!confirm("Delete this property?")) return;
 
-    if (!confirm("Delete this property?")) return;
+  await fetch(`${API_URL}/${id}`, {
+    method: "DELETE",
+  });
 
-    await fetch(`${API_URL}/${id}`, {
-
-        method: "DELETE"
-
-    });
-
-    loadProperties();
-
+  loadProperties();
 }
 
 // Edit Property (Coming Next)
-function editProperty(id){
-
-    alert("Edit feature coming next.");
-
+function editProperty(id) {
+  alert("Edit feature coming next.");
 }
 
 // Load on startup

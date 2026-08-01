@@ -36,12 +36,13 @@
 
         <input type="number" id="bathrooms" placeholder="Bathrooms" required />
 
-        <input
-          type="text"
-          id="image"
-          placeholder="Image Path (e.g. images/properties/house4.jpg)"
-          required
-        />
+        <input type="file" id="image" accept="image/*" required />
+
+        <select id="status">
+          <option value="Available">Available</option>
+
+          <option value="Sold">Sold</option>
+        </select>
 
         <textarea
           id="description"
