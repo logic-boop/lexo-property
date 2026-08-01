@@ -1,3 +1,5 @@
+const upload = require("../middleware/upload");
+
 const express = require("express");
 
 const router = express.Router();
@@ -17,7 +19,13 @@ router.get("/", getProperties);
 router.get("/:id", getProperty);
 
 // CREATE
-router.post("/", createProperty);
+router.post(
+  "/",
+
+  upload.single("image"),
+
+  createProperty,
+);
 
 // UPDATE
 router.put("/:id", updateProperty);

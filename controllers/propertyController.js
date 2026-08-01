@@ -32,10 +32,28 @@ const getProperty = async (req, res) => {
   }
 };
 
-// CREATE property
+// CREATE PROPERTY
 const createProperty = async (req, res) => {
   try {
-    const property = await Property.create(req.body);
+    const property = await Property.create({
+      title: req.body.title,
+
+      price: req.body.price,
+
+      location: req.body.location,
+
+      type: req.body.type,
+
+      bedrooms: req.body.bedrooms,
+
+      bathrooms: req.body.bathrooms,
+
+      description: req.body.description,
+
+      status: req.body.status,
+
+      image: `/uploads/${req.file.filename}`,
+    });
 
     res.status(201).json(property);
   } catch (error) {
@@ -48,13 +66,9 @@ const createProperty = async (req, res) => {
 // UPDATE property
 const updateProperty = async (req, res) => {
   try {
-    const property = await Property.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-      }
-    );
+    const property = await Property.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
 
     res.json(property);
   } catch (error) {
