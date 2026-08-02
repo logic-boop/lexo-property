@@ -952,3 +952,55 @@ background:#f3f4f6;
     background:#ef4444;
     color:#ffffff;
 }
+
+.table-image {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.status.available {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status.sold {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.edit-btn {
+  background: #f59e0b;
+}
+
+.delete-btn {
+  background: #ef4444;
+}
+
+.edit-btn:hover {
+  background: #d97706;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
