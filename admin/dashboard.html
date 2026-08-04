@@ -1,200 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Lexo Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <section class="dashboard">
+      <div class="container">
+        <div class="dashboard-header">
+          <div>
+            <h1>Admin Dashboard</h1>
+
+            <p>Manage all your properties from one place.</p>
+          </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+
+        <div class="dashboard-cards">
+          <div class="dashboard-card">
+            <h3>Total Properties</h3>
+
+            <h2 id="totalProperties">0</h2>
+          </div>
+
+          <div class="dashboard-card">
+            <h3>Available</h3>
+
+            <h2 id="availableProperties">0</h2>
+          </div>
+
+          <div class="dashboard-card">
+            <h3>Sold</h3>
+
+            <h2 id="soldProperties">0</h2>
+          </div>
+        </div>
+
+        <!-- Add Property -->
+
+        <div class="recent-properties">
+          <h2>Add New Property</h2>
+
+          <form id="property-form" enctype="multipart/form-data">
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Property Title"
+              required
+            />
+
+            <input
+              type="number"
+              id="price"
+              name="price"
+              placeholder="Price"
+              required
+            />
+
+            <input
+              type="text"
+              id="location"
+              name="location"
+              placeholder="Location"
+              required
+            />
+
+            <input
+              type="text"
+              id="type"
+              name="type"
+              placeholder="Property Type"
+              required
+            />
+
+            <input
+              type="number"
+              id="bedrooms"
+              name="bedrooms"
+              placeholder="Bedrooms"
+              required
+            />
+
+            <input
+              type="number"
+              id="bathrooms"
+              name="bathrooms"
+              placeholder="Bathrooms"
+              required
+            />
+
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              required
+            />
 
-<head>
+            <select id="status" name="status">
+              <option value="Available">Available</option>
+              <option value="Sold">Sold</option>
+            </select>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <textarea
+              id="description"
+              name="description"
+              placeholder="Property Description"
+              rows="5"
+              required
+            ></textarea>
 
-<title>Lexo Admin Dashboard</title>
+            <button type="submit">Add Property</button>
+          </form>
+        </div>
 
-<link rel="stylesheet" href="../css/style.css">
+        <!-- Property Table -->
 
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet"
-/>
+        <div class="recent-properties">
+          <h2>Manage Properties</h2>
 
-</head>
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
 
-<body>
+                <th>Title</th>
 
-<section class="dashboard">
+                <th>Location</th>
 
-<div class="container">
+                <th>Price</th>
 
-<div class="dashboard-header">
+                <th>Status</th>
 
-<div>
+                <th>Actions</th>
+              </tr>
+            </thead>
 
-<h1>Admin Dashboard</h1>
+            <tbody id="property-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
-<p>Manage all your properties from one place.</p>
-
-</div>
-
-</div>
-
-<!-- Dashboard Cards -->
-
-<div class="dashboard-cards">
-
-<div class="dashboard-card">
-
-<h3>Total Properties</h3>
-
-<h2 id="totalProperties">0</h2>
-
-</div>
-
-<div class="dashboard-card">
-
-<h3>Available</h3>
-
-<h2 id="availableProperties">0</h2>
-
-</div>
-
-<div class="dashboard-card">
-
-<h3>Sold</h3>
-
-<h2 id="soldProperties">0</h2>
-
-</div>
-
-</div>
-
-<!-- Add Property -->
-
-<div class="recent-properties">
-
-<h2>Add New Property</h2>
-
-<form id="property-form" enctype="multipart/form-data">
-
-<div class="form-grid">
-
-<input
-type="text"
-id="title"
-placeholder="Property Title"
-required
->
-
-<input
-type="number"
-id="price"
-placeholder="Price"
-required
->
-
-<input
-type="text"
-id="location"
-placeholder="Location"
-required
->
-
-<input
-type="text"
-id="type"
-placeholder="Property Type"
-required
->
-
-<input
-type="number"
-id="bedrooms"
-placeholder="Bedrooms"
-required
->
-
-<input
-type="number"
-id="bathrooms"
-placeholder="Bathrooms"
-required
->
-
-<input
-type="file"
-id="image"
-accept="image/*"
-required
->
-
-<select id="status">
-
-<option value="Available">Available</option>
-
-<option value="Sold">Sold</option>
-
-</select>
-
-</div>
-
-<textarea
-id="description"
-rows="6"
-placeholder="Property Description"
-required
-></textarea>
-
-<button type="submit">
-
-Add Property
-
-</button>
-
-</form>
-
-</div>
-
-<!-- Property Table -->
-
-<div class="recent-properties">
-
-<h2>Manage Properties</h2>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Image</th>
-
-<th>Title</th>
-
-<th>Location</th>
-
-<th>Price</th>
-
-<th>Status</th>
-
-<th>Actions</th>
-
-</tr>
-
-</thead>
-
-<tbody id="property-table-body">
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</section>
-
-<script src="../js/admin.js"></script>
-
-<script src="../js/dashboard.js"></script>
-
-</body>
-
+    <script src="../js/dashboard.js"></script>
+  </body>
 </html>

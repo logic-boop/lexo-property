@@ -1,8 +1,7 @@
-const upload = require("../middleware/upload");
-
 const express = require("express");
-
 const router = express.Router();
+
+const upload = require("../middleware/upload");
 
 const {
   getProperties,
@@ -12,25 +11,19 @@ const {
   deleteProperty,
 } = require("../controllers/propertyController");
 
-// GET all
+// GET all properties
 router.get("/", getProperties);
 
-// GET one
+// GET single property
 router.get("/:id", getProperty);
 
-// CREATE
-router.post(
-  "/",
+// CREATE property
+router.post("/", upload.single("image"), createProperty);
 
-  upload.single("image"),
+// UPDATE property
+router.put("/:id", upload.single("image"), updateProperty);
 
-  createProperty,
-);
-
-// UPDATE
-router.put("/:id", updateProperty);
-
-// DELETE
+// DELETE property
 router.delete("/:id", deleteProperty);
 
 module.exports = router;
