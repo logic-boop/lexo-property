@@ -30,19 +30,16 @@
         <div class="dashboard-cards">
           <div class="dashboard-card">
             <h3>Total Properties</h3>
-
             <h2 id="totalProperties">0</h2>
           </div>
 
           <div class="dashboard-card">
             <h3>Available</h3>
-
             <h2 id="availableProperties">0</h2>
           </div>
 
           <div class="dashboard-card">
             <h3>Sold</h3>
-
             <h2 id="soldProperties">0</h2>
           </div>
         </div>
@@ -65,7 +62,7 @@
               type="number"
               id="price"
               name="price"
-              placeholder="Price"
+              placeholder="Price (₦)"
               required
             />
 
@@ -101,13 +98,14 @@
               required
             />
 
-            <input
-              type="file"
-              id="image"
-              name="image"
-              accept="image/*"
-              required
-            />
+            <label for="image">Property Image</label>
+
+            <input type="file" id="image" name="image" accept="image/*" />
+
+            <small id="image-note">
+              Leave this empty if you don't want to replace the current image
+              while editing.
+            </small>
 
             <select id="status" name="status">
               <option value="Available">Available</option>
@@ -126,10 +124,37 @@
           </form>
         </div>
 
-        <!-- Property Table -->
+        <!-- Manage Properties -->
 
         <div class="recent-properties">
-          <h2>Manage Properties</h2>
+          <div class="table-header">
+            <h2>Manage Properties</h2>
+
+            <div class="table-controls">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search by title, location or property type..."
+              />
+
+              <select id="statusFilter">
+                <option value="All">All Status</option>
+
+                <option value="Available">Available</option>
+
+                <option value="Sold">Sold</option>
+              </select>
+
+              <select id="sortFilter">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="highest">Highest Price</option>
+                <option value="lowest">Lowest Price</option>
+                <option value="az">A - Z</option>
+                <option value="za">Z - A</option>
+              </select>
+            </div>
+          </div>
 
           <table>
             <thead>

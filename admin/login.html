@@ -1,56 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
 
-<title>Admin Login | Lexo Property</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link rel="stylesheet" href="../css/style.css">
+    <title>Admin Login | Lexo Property</title>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<body>
+  <body>
+    <section class="admin-login">
+      <div class="login-card">
+        <h1>LEXO PROPERTY</h1>
 
-<section class="admin-login">
+        <p>Administrator Login</p>
 
-<div class="login-card">
+        <form id="loginForm">
+          <input type="email" id="email" placeholder="Email Address" required />
 
-<img
-src="../images/logo.png"
-alt="Lexo Property Logo"
-class="login-logo">
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
 
-<h1>Admin Login</h1>
+          <button type="submit" id="loginBtn">Login</button>
 
-<p>
-Sign in to manage properties and website content.
-</p>
+          <p
+            id="loginMessage"
+            style="
+              margin-top: 15px;
+              color: #ef4444;
+              font-weight: 600;
+              text-align: center;
+            "
+          ></p>
+        </form>
+      </div>
+    </section>
 
-<form>
-
-<input
-type="email"
-placeholder="Admin Email"
-required>
-
-<input
-type="password"
-placeholder="Password"
-required>
-
-<button type="submit">
-Login
-</button>
-
-</form>
-
-</div>
-
-</section>
-
-</body>
+    <script src="/js/login.js"></script>
+  </body>
 </html>

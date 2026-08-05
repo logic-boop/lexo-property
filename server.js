@@ -1,11 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-
 const path = require("path");
 
 const connectDB = require("./config/db");
+
+// Routes
 const propertyRoutes = require("./routes/propertyRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 dotenv.config();
 
@@ -14,26 +16,47 @@ connectDB();
 
 const app = express();
 
-// Middleware
+// ==========================
+// MIDDLEWARE
+// ==========================
+
 app.use(cors());
+
 app.use(express.json());
 
+app.use(express.urlencoded({ extended: true }));
+
+// ==========================
+// STATIC FILES
+// ==========================
+
 app.use(
-    "/uploads",
-    express.static(
-        path.join(__dirname,"public/uploads")
-    )
+  "/uploads",
+  express.static(path.join(__dirname, "public/uploads"))
 );
 
-// Home Route
+// ==========================
+// HOME ROUTE
+// ==========================
+
 app.get("/", (req, res) => {
   res.send("🚀 Lexo Property Backend is Running...");
 });
 
+// ==========================
+// API ROUTES
+// ==========================
+
 // Property Routes
 app.use("/api/properties", propertyRoutes);
 
-// Start Server
+// Authentication Routes
+app.use("/api/auth", authRoutes);
+
+// ==========================
+// START SERVER
+// ==========================
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

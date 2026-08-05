@@ -1,3 +1,11 @@
+// ===================================
+// ADMIN AUTHENTICATION
+// ===================================
+
+if (localStorage.getItem("lexoAdmin") !== "true") {
+    window.location.href = "login.html";
+}
+
 // ===============================
 // LEXO PROPERTY ADMIN DASHBOARD
 // ===============================
@@ -7,6 +15,12 @@ const API_URL = `${BASE_URL}/api/properties`;
 
 // Dashboard Elements
 const propertyTableBody = document.getElementById("property-table-body");
+
+const searchInput = document.getElementById("searchInput");
+const statusFilter = document.getElementById("statusFilter");
+const sortFilter = document.getElementById("sortFilter");
+
+let allProperties = [];
 
 const totalProperties = document.getElementById("totalProperties");
 const availableProperties = document.getElementById("availableProperties");
@@ -45,9 +59,11 @@ async function loadProperties() {
 
     const properties = await response.json();
 
-    updateStatistics(properties);
+    allProperties = properties;
 
-    renderPropertyTable(properties);
+    updateStatistics(allProperties);
+
+    renderPropertyTable(allProperties);
   } catch (error) {
     console.error(error);
 
@@ -188,6 +204,7 @@ async function saveProperty(e) {
     propertyForm.reset();
 
     editingId = null;
+    document.getElementById("image").required = true;
 
     document.querySelector("#property-form button").textContent =
       "Add Property";
@@ -224,6 +241,8 @@ async function editProperty(id) {
     document.getElementById("status").value = property.status;
 
     editingId = property._id;
+    // Image is optional when editing
+    document.getElementById("image").required = false;
 
     document.querySelector("#property-form button").textContent =
       "Update Property";
@@ -243,6 +262,87 @@ async function editProperty(id) {
 // DELETE PROPERTY
 // ===============================
 
-function deleteProperty(id) {
-  console.log("Deleting:", id);
+async function deleteProperty(id) {
+  const confirmDelete = confirm(
+    "Are you sure you want to delete this property?\n\nThis action cannot be undone.",
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete property.");
+    }
+
+    alert("Property deleted successfully.");
+
+    loadProperties();
+  } catch (error) {
+    console.error(error);
+
+    alert("Unable to delete property.");
+  }
 }
+
+function filterProperties() {
+  const search = searchInput.value.toLowerCase();
+
+  const status = statusFilter.value;
+
+  const sort = sortFilter.value;
+
+  let filtered = allProperties.filter((property) => {
+    const matchesSearch =
+      property.title.toLowerCase().includes(search) ||
+      property.location.toLowerCase().includes(search) ||
+      property.type.toLowerCase().includes(search);
+
+    const matchesStatus = status === "All" || property.status === status;
+
+    return matchesSearch && matchesStatus;
+  });
+
+  switch (sort) {
+    case "newest":
+      filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+      break;
+
+    case "oldest":
+      filtered.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+
+      break;
+
+    case "highest":
+      filtered.sort((a, b) => b.price - a.price);
+
+      break;
+
+    case "lowest":
+      filtered.sort((a, b) => a.price - b.price);
+
+      break;
+
+    case "az":
+      filtered.sort((a, b) => a.title.localeCompare(b.title));
+
+      break;
+
+    case "za":
+      filtered.sort((a, b) => b.title.localeCompare(a.title));
+
+      break;
+  }
+
+  renderPropertyTable(filtered);
+}
+
+searchInput.addEventListener("input", filterProperties);
+
+statusFilter.addEventListener("change", filterProperties);
+
+sortFilter.addEventListener("change", filterProperties);
