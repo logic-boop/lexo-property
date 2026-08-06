@@ -1,139 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Property Details | Lexo Property</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet">
+    <title>Property Details | Lexo Property</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
 
-<header class="navbar">
-<div class="container nav-container">
+    <!-- ==========================
+         HEADER
+    =========================== -->
 
-<a href="index.html" class="logo">
-<img src="images/logo.png" alt="Lexo Property">
+    <header class="page-header">
 
-<div class="logo-text">
-<h2>LEXO PROPERTY</h2>
-<p>Affordable Property</p>
-</div>
-</a>
+        <div class="container">
 
-<nav class="nav-links">
-<a href="index.html">Home</a>
-<a href="properties.html">Properties</a>
-<a href="services.html">Services</a>
-<a href="about.html">About Us</a>
-<a href="contact.html">Contact</a>
-</nav>
+            <a href="index.html" class="logo">
+                <h2>LEXO PROPERTY</h2>
+            </a>
 
-<a href="properties.html" class="browse-btn">
-Browse Properties
-</a>
+            <nav>
 
-</div>
-</header>
+                <a href="index.html">Home</a>
 
-<section class="property-details">
+                <a href="properties.html">Properties</a>
 
-<div class="container">
+                <a href="services.html">Services</a>
 
-<div class="details-grid">
+                <a href="about.html">About</a>
 
-<div class="details-image">
+                <a href="contact.html">Contact</a>
 
-<img
-src="images/properties/house1.jpg"
-alt="Modern Family House">
+            </nav>
 
-</div>
-
-<div class="details-content">
-
-<span class="property-price">
-₦85,000,000
-</span>
-
-<h1>Modern Family House</h1>
-
-<p class="location">
-📍 Ibadan, Oyo State
-</p>
-
-<div class="property-features">
-
-<span>🛏 4 Beds</span>
-<span>🚿 3 Baths</span>
-<span>🚗 2 Parking</span>
-
-</div>
-
-<p class="description">
-
-This modern family house is located in a secure
-and peaceful neighborhood in Ibadan. It offers
-spacious rooms, ample parking space, modern
-finishes, and easy access to major roads.
-
-</p>
-
-<a href="contact.html" class="contact-agent-btn">
-Contact Agent
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer class="footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <img src="images/logo.png" alt="Lexo Property Logo" />
-
-            <h3>LEXO PROPERTY</h3>
-
-            <p>
-              Helping Nigerians find affordable and trusted properties across
-              the country.
-            </p>
-          </div>
-
-          <div class="footer-links">
-            <h4>Quick Links</h4>
-
-            <a href="./index.html">Home</a>
-            <a href="./properties.html">Properties</a>
-            <a href="./services.html">Services</a>
-            <a href="./about.html">About Us</a>
-            <a href="./contact.html">Contact</a>
-          </div>
-
-          <div class="footer-contact">
-            <h4>Contact Info</h4>
-
-            <p>📍 Ibadan, Oyo State</p>
-            <p>📞 +234 907 994 8293</p>
-            <p>✉ lexoproperty@gmail.com</p>
-          </div>
         </div>
 
-        <div class="footer-bottom">
-          <p>© 2026 Lexo Property. All Rights Reserved.</p>
+    </header>
+
+    <!-- ==========================
+         LOADING
+    =========================== -->
+
+    <section id="loadingState" class="loading-state">
+
+        <h2>Loading Property...</h2>
+
+    </section>
+
+    <!-- ==========================
+         NOT FOUND
+    =========================== -->
+
+    <section id="notFound" class="not-found" style="display:none;">
+
+        <h1>404</h1>
+
+        <h2>Property Not Found</h2>
+
+        <p>
+
+            The property you are looking for no longer exists.
+
+        </p>
+
+        <a href="properties.html" class="property-btn">
+
+            Browse Properties
+
+        </a>
+
+    </section>
+
+    <!-- ==========================
+         PROPERTY DETAILS
+    =========================== -->
+
+    <section id="propertySection"
+        class="property-details-page"
+        style="display:none;">
+
+        <div class="container">
+
+            <div class="property-image">
+
+                <img
+                    id="propertyImage"
+                    src=""
+                    alt="Property Image">
+
+            </div>
+
+            <div class="property-info">
+
+                <span
+                    id="propertyStatus"
+                    class="status">
+
+                </span>
+
+                <h1 id="propertyTitle"></h1>
+
+                <h2 id="propertyPrice"></h2>
+
+                <p
+                    id="propertyLocation"
+                    class="property-location">
+
+                </p>
+
+                <!-- Changed from property-features to details-features -->
+
+                <div class="details-features">
+
+                    <div>
+
+                        🛏
+
+                        <span id="propertyBedrooms"></span>
+
+                        Bedrooms
+
+                    </div>
+
+                    <div>
+
+                        🚿
+
+                        <span id="propertyBathrooms"></span>
+
+                        Bathrooms
+
+                    </div>
+
+                    <div>
+
+                        🏠
+
+                        <span id="propertyType"></span>
+
+                        Property Type
+
+                    </div>
+
+                </div>
+
+                <div class="property-description">
+
+                    <h3>Description</h3>
+
+                    <p id="propertyDescription"></p>
+
+                </div>
+
+                <!-- Contact Buttons -->
+
+                <div class="property-actions">
+
+                    <a
+                        href="tel:+2349079948293"
+                        class="call-btn">
+
+                        📞 Call Agent
+
+                    </a>
+
+                    <a
+                        href="https://wa.me/2349079948293"
+                        target="_blank"
+                        class="whatsapp-btn">
+
+                        💬 WhatsApp
+
+                    </a>
+
+                    <a
+                        href="mailto:lexoproperty@gmail.com"
+                        class="email-btn">
+
+                        ✉ Email
+
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
+
+    </section>
+
+    <!-- ==========================
+         RELATED PROPERTIES
+    =========================== -->
+
+    <section
+        id="relatedPropertiesSection"
+        class="related-properties">
+
+        <div class="container">
+
+            <h2>Related Properties</h2>
+
+            <div
+                id="relatedPropertiesGrid"
+                class="property-grid">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================
+         FOOTER
+    =========================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <h3>LEXO PROPERTY</h3>
+
+                    <p>
+
+                        Helping Nigerians find affordable and trusted
+                        properties across the country.
+
+                    </p>
+
+                </div>
+
+                <div class="footer-links">
+
+                    <h4>Quick Links</h4>
+
+                    <a href="index.html">Home</a>
+
+                    <a href="properties.html">Properties</a>
+
+                    <a href="services.html">Services</a>
+
+                    <a href="about.html">About</a>
+
+                    <a href="contact.html">Contact</a>
+
+                </div>
+
+                <div class="footer-contact">
+
+                    <h4>Contact Info</h4>
+
+                    <p>📍 Ibadan, Oyo State</p>
+
+                    <p>📞 +234 907 994 8293</p>
+
+                    <p>✉ lexoproperty@gmail.com</p>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>
+
+                    © 2026 Lexo Property. All Rights Reserved.
+
+                </p>
+
+            </div>
+
+        </div>
+
     </footer>
+
+    <script src="/js/property-details.js"></script>
+
 </body>
+
 </html>

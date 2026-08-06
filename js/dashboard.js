@@ -3,9 +3,22 @@
 // ===================================
 
 if (localStorage.getItem("lexoAdmin") !== "true") {
-    window.location.href = "login.html";
+  window.location.href = "login.html";
 }
 
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    const confirmed = confirm("Are you sure you want to logout?");
+
+    if (!confirmed) return;
+
+    localStorage.removeItem("lexoAdmin");
+
+    window.location.href = "login.html";
+  });
+}
 // ===============================
 // LEXO PROPERTY ADMIN DASHBOARD
 // ===============================
