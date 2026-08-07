@@ -113,6 +113,16 @@
               <option value="Sold">Sold</option>
             </select>
 
+            <!-- NEW -->
+
+            <div class="featured-property">
+              <label class="featured-label">
+                <input type="checkbox" id="featured" name="featured" />
+
+                Feature this property on the Homepage
+              </label>
+            </div>
+
             <textarea
               id="description"
               name="description"
@@ -146,6 +156,14 @@
                 <option value="Sold">Sold</option>
               </select>
 
+              <!-- NEW -->
+
+              <select id="featuredFilter">
+                <option value="All">All Properties</option>
+                <option value="Featured">Featured Only</option>
+                <option value="Not Featured">Not Featured</option>
+              </select>
+
               <select id="sortFilter">
                 <option value="newest">Newest First</option>
                 <option value="oldest">Oldest First</option>
@@ -176,6 +194,14 @@
 
             <tbody id="property-table-body"></tbody>
           </table>
+
+          <div class="pagination">
+            <button id="prevPage">Previous</button>
+
+            <span id="pageInfo"> Page 1 </span>
+
+            <button id="nextPage">Next</button>
+          </div>
         </div>
       </div>
     </section>

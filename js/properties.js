@@ -3,24 +3,39 @@ const API_URL = "http://localhost:5000";
 const propertyGrid = document.getElementById("property-grid");
 
 async function loadProperties() {
+  try {
+    const response = await fetch(`${API_URL}/api/properties?featured=true`);
 
-    try{
+    if (!response.ok) {
+      throw new Error("Failed to fetch properties.");
+    }
 
-        const response = await fetch(`${API_URL}/api/properties`);
+    const properties = await response.json();
 
-        if(!response.ok){
+    if (properties.length === 0) {
+      propertyGrid.innerHTML = `
 
-            throw new Error("Failed to fetch properties.");
+        <div class="empty-properties">
 
-        }
+            <h3>No Featured Properties Yet</h3>
 
-        const properties = await response.json();
+            <p>
 
-        propertyGrid.innerHTML = "";
+                Featured properties will appear here once they are added.
 
-        properties.forEach((property)=>{
+            </p>
 
-            propertyGrid.innerHTML += `
+        </div>
+
+    `;
+
+      return;
+    }
+
+    propertyGrid.innerHTML = "";
+
+    properties.forEach((property) => {
+      propertyGrid.innerHTML += `
 
                 <div class="property-card">
 
@@ -65,16 +80,11 @@ async function loadProperties() {
                 </div>
 
             `;
+    });
+  } catch (error) {
+    console.error(error);
 
-        });
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        propertyGrid.innerHTML = `
+    propertyGrid.innerHTML = `
 
             <p
                 style="
@@ -89,9 +99,27 @@ async function loadProperties() {
             </p>
 
         `;
-
-    }
-
+  }
 }
 
 loadProperties();
+
+const searchBtn = document.getElementById("search-btn");
+
+if (searchBtn) {
+  searchBtn.addEventListener("click", () => {
+    const location = document.getElementById("search-location").value.trim();
+    const type = document.getElementById("search-type").value;
+    const price = document.getElementById("search-price").value;
+    const bedrooms = document.getElementById("search-bedrooms").value;
+
+    const params = new URLSearchParams();
+
+    if (location) params.append("location", location);
+    if (type) params.append("type", type);
+    if (price) params.append("price", price);
+    if (bedrooms) params.append("bedrooms", bedrooms);
+
+    window.location.href = `properties.html?${params.toString()}`;
+  });
+}
