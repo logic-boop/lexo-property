@@ -3,19 +3,19 @@ const fs = require("fs");
 const path = require("path");
 
 // ==========================
-// GET SINGLE PROPERTY
+// GET ALL PROPERTIES
 // ==========================
 
 const getProperties = async (req, res) => {
   try {
     const query = {};
 
-    // Featured
+    // Featured properties
     if (req.query.featured === "true") {
       query.featured = true;
     }
 
-    // Location
+    // Location search
     if (req.query.location) {
       query.location = {
         $regex: req.query.location,
@@ -23,7 +23,7 @@ const getProperties = async (req, res) => {
       };
     }
 
-    // Property Type
+    // Property type
     if (req.query.type) {
       query.type = req.query.type;
     }
@@ -33,7 +33,7 @@ const getProperties = async (req, res) => {
       query.bedrooms = Number(req.query.bedrooms);
     }
 
-    // Minimum Price
+    // Minimum price
     if (req.query.price) {
       query.price = {
         $gte: Number(req.query.price),
@@ -45,6 +45,30 @@ const getProperties = async (req, res) => {
     });
 
     res.json(properties);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+// ==========================
+// GET SINGLE PROPERTY
+// ==========================
+
+const getProperty = async (req, res) => {
+  try {
+    const property = await Property.findById(req.params.id);
+
+    if (!property) {
+      return res.status(404).json({
+        message: "Property not found.",
+      });
+    }
+
+    res.json(property);
   } catch (error) {
     console.error(error);
 
@@ -179,6 +203,10 @@ const deleteProperty = async (req, res) => {
     });
   }
 };
+
+// ==========================
+// EXPORT CONTROLLERS
+// ==========================
 
 module.exports = {
   getProperties,
