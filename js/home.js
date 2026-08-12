@@ -2,26 +2,25 @@
 // LEXO PROPERTY HOMEPAGE SEARCH
 // ===================================
 
-const searchBtn = document.getElementById("search-btn");
+const homeSearchBtn = document.getElementById("search-btn");
 
-if (searchBtn) {
-  searchBtn.addEventListener("click", () => {
-    // Get search values
-    const location = document
-      .getElementById("search-location")
-      .value
-      .trim();
+if (homeSearchBtn) {
+  homeSearchBtn.addEventListener("click", () => {
+    const locationInput = document.getElementById("search-location");
+    const typeInput = document.getElementById("search-type");
+    const priceInput = document.getElementById("search-price");
+    const bedroomsInput = document.getElementById("search-bedrooms");
 
-    const type = document.getElementById("search-type").value;
+    const location = locationInput
+      ? locationInput.value.trim()
+      : "";
 
-    const price = document.getElementById("search-price").value;
+    const type = typeInput ? typeInput.value : "";
+    const price = priceInput ? priceInput.value : "";
+    const bedrooms = bedroomsInput ? bedroomsInput.value : "";
 
-    const bedrooms = document.getElementById("search-bedrooms").value;
-
-    // Create URL parameters
     const params = new URLSearchParams();
 
-    // Only add filters that were actually selected
     if (location) {
       params.append("location", location);
     }
@@ -38,14 +37,12 @@ if (searchBtn) {
       params.append("bedrooms", bedrooms);
     }
 
-    // Build destination URL
     const queryString = params.toString();
 
     const destination = queryString
       ? `properties.html?${queryString}`
       : "properties.html";
 
-    // Debug information
     console.log("========== LEXO SEARCH ==========");
     console.log("Location:", location || "Any Location");
     console.log("Type:", type || "Any Type");
@@ -54,7 +51,6 @@ if (searchBtn) {
     console.log("Destination:", destination);
     console.log("=================================");
 
-    // Go to properties page
     window.location.href = destination;
   });
 }

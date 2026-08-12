@@ -156,28 +156,4 @@ if (propertyGrid) {
   loadProperties();
 }
 
-// ===============================
-// HOMEPAGE SEARCH
-// ===============================
-
-const searchBtn = document.getElementById("search-btn");
-
-if (searchBtn) {
-  searchBtn.addEventListener("click", () => {
-    const location = document.getElementById("search-location").value.trim();
-    const type = document.getElementById("search-type").value;
-    const price = document.getElementById("search-price").value;
-    const bedrooms = document.getElementById("search-bedrooms").value;
-
-    const params = new URLSearchParams();
-
-    if (location) params.append("location", location);
-    if (type) params.append("type", type);
-    if (price) params.append("price", price);
-    if (bedrooms) params.append("bedrooms", bedrooms);
-
-    window.location.href = `properties.html?${params.toString()}`;
-  });
-}
-
 loadProperties();

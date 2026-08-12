@@ -8,7 +8,6 @@
    ========================================================= */
 
 @media (max-width: 1200px) {
-
   .container {
     width: 92%;
   }
@@ -70,14 +69,12 @@
   }
 }
 
-
 /* =========================================================
    TABLETS
    991px and below
    ========================================================= */
 
 @media (max-width: 991px) {
-
   .container {
     width: 92%;
   }
@@ -196,14 +193,12 @@
   }
 }
 
-
 /* =========================================================
    MOBILE
    768px and below
    ========================================================= */
 
 @media (max-width: 768px) {
-
   /* GENERAL */
 
   .container {
@@ -525,9 +520,7 @@
   .login-card {
     padding: 35px 25px;
   }
-
 }
-
 
 /* =========================================================
    SMALL PHONES
@@ -535,7 +528,6 @@
    ========================================================= */
 
 @media (max-width: 480px) {
-
   .container {
     width: 94%;
   }
@@ -670,9 +662,7 @@
     padding: 30px 20px;
     border-radius: 18px;
   }
-
 }
-
 
 /* =========================================================
    VERY SMALL PHONES
@@ -680,7 +670,6 @@
    ========================================================= */
 
 @media (max-width: 360px) {
-
   .logo-text {
     display: none;
   }
@@ -700,5 +689,391 @@
   .property-card img {
     height: 190px;
   }
+}
 
+/* =========================================================
+   LEXO PROPERTY RESPONSIVE NAVIGATION
+   ========================================================= */
+
+/* ==========================================
+   TABLET / SMALL LAPTOP
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .nav-container {
+    height: 78px;
+  }
+
+  .logo img {
+    width: 62px;
+    height: 62px;
+  }
+
+  .logo-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .logo-text p {
+    font-size: 0.78rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .desktop-browse-btn {
+    display: none;
+  }
+
+  .menu-toggle {
+    width: 46px;
+    height: 46px;
+    border: none;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .menu-toggle span {
+    width: 27px;
+    height: 3px;
+    background: #111827;
+    border-radius: 999px;
+    transition: 0.3s ease;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-links.active {
+    display: flex;
+    position: absolute;
+    top: 78px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 15px 5%;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .nav-links.active a {
+    padding: 15px 10px;
+    width: 100%;
+  }
+
+  .nav-links.active a::after {
+    display: none;
+  }
+}
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .nav-container {
+    height: 70px;
+  }
+
+  .logo img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .logo-text h2 {
+    font-size: 1rem;
+  }
+
+  .logo-text p {
+    font-size: 0.7rem;
+  }
+
+  .nav-links.active {
+    top: 70px;
+  }
+}
+
+/* =========================================================
+   HERO RESPONSIVENESS
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-content {
+    padding: 60px 0;
+  }
+
+  .hero h1 {
+    font-size: 2.7rem;
+  }
+
+  .search-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 420px;
+  }
+
+  .hero-content {
+    padding: 55px 0;
+  }
+
+  .badge {
+    font-size: 0.72rem;
+    padding: 7px 14px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-top: 20px;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+    margin: 18px auto 0;
+    line-height: 1.6;
+  }
+
+  /* Remove homepage search on mobile */
+  .search-card {
+    display: none;
+  }
+
+  .stats {
+    margin-top: 35px;
+  }
+}
+
+/* =========================================================
+   FEATURED PROPERTY PAGINATION
+   ========================================================= */
+
+.property-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin-top: 45px;
+}
+
+.pagination-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pagination-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #d1d5db;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.pagination-dot.active {
+  width: 25px;
+  border-radius: 999px;
+  background: var(--primary-green);
+}
+
+.pagination-arrow {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.pagination-arrow:hover {
+  background: var(--primary-green);
+  color: #ffffff;
+  border-color: var(--primary-green);
+}
+
+.pagination-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   TABLET FEATURED PROPERTIES
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .property-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 10px 5px 25px;
+    scrollbar-width: none;
+  }
+
+  .property-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .property-card {
+    flex: 0 0 calc(50% - 10px);
+    scroll-snap-align: start;
+  }
+}
+
+/* ==========================================
+   MOBILE FEATURED PROPERTIES
+   ========================================== */
+
+@media (max-width: 768px) {
+  .featured-properties {
+    padding: 70px 0;
+  }
+
+  .section-header {
+    margin-bottom: 35px;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .section-header p {
+    font-size: 0.9rem;
+  }
+
+  .property-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 18px;
+    padding: 5px 3px 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .property-card {
+    flex: 0 0 88%;
+    scroll-snap-align: center;
+  }
+
+  .property-card img {
+    height: 220px;
+  }
+
+  .property-content {
+    padding: 20px;
+  }
+
+  .property-price {
+    font-size: 1.3rem;
+  }
+
+  .property-features {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .property-pagination {
+    margin-top: 25px;
+    gap: 15px;
+  }
+}
+
+/* =========================================================
+   FOOTER RESPONSIVENESS
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .footer {
+    padding: 70px 0 25px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 60px 0 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-contact {
+    width: 100%;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-brand img {
+    margin: 0 auto 15px;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    margin-bottom: 15px;
+  }
+
+  .footer-links a {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .footer-contact p {
+    margin-bottom: 10px;
+  }
+
+  .footer-bottom {
+    margin-top: 35px;
+    padding-top: 20px;
+    font-size: 0.8rem;
+    text-align: center;
+  }
 }
