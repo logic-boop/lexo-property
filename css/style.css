@@ -122,6 +122,10 @@ a {
   background: var(--primary-green-dark);
 }
 
+.menu-toggle {
+  display: none;
+}
+
 /* ==========================
    HERO SECTION
 ========================== */

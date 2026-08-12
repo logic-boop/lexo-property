@@ -6,6 +6,7 @@
 
     <title>LEXO PROPERTY</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -14,13 +15,18 @@
       rel="stylesheet"
     />
 
+    <!-- Main Styles -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
   </head>
 
   <body>
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
     <header class="navbar">
       <div class="container nav-container">
+        <!-- Logo -->
         <a href="./index.html" class="logo">
           <img src="images/logo.png" alt="Lexo Property Logo" />
 
@@ -30,7 +36,8 @@
           </div>
         </a>
 
-        <nav class="nav-links">
+        <!-- Desktop / Mobile Navigation -->
+        <nav class="nav-links" id="nav-links" aria-label="Main navigation">
           <a href="./index.html" class="active">Home</a>
           <a href="./properties.html">Properties</a>
           <a href="./services.html">Services</a>
@@ -38,35 +45,70 @@
           <a href="./contact.html">Contact</a>
         </nav>
 
-        <a href="./properties.html" class="browse-btn"> Browse Properties </a>
+        <!-- Desktop Browse Button -->
+        <a href="./properties.html" class="browse-btn desktop-browse-btn">
+          Browse Properties
+        </a>
+
+        <!-- Mobile / Tablet Menu Button -->
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
+    <!-- =========================================
+         HERO SECTION
+    ========================================== -->
     <section class="hero">
+      <!-- Hero background/overlay is controlled by CSS -->
       <div class="hero-overlay"></div>
 
       <div class="container hero-content">
+        <!-- Hero Badge -->
         <div class="badge">🏡 Nigeria's #1 Trusted Property Marketplace</div>
 
+        <!-- Hero Heading -->
         <h1>
           Find Your Dream Home
           <span>Without Stress.</span>
         </h1>
 
+        <!-- Hero Description -->
         <p>Buy, rent or lease properties at affordable prices.</p>
 
-        <div class="search-card">
+        <!-- =====================================
+             PROPERTY SEARCH
+             
+             This remains in the HTML.
+             CSS will hide/minimize it on smaller
+             screens.
+        ====================================== -->
+        <div class="search-card" id="property-search">
+          <!-- Location -->
           <div class="search-field">
-            <label>Location</label>
+            <label for="search-location"> Location </label>
+
             <input
               type="text"
               id="search-location"
               placeholder="Ibadan, Lagos, Abuja..."
+              autocomplete="off"
             />
           </div>
 
+          <!-- Property Type -->
           <div class="search-field">
-            <label>Property Type</label>
+            <label for="search-type"> Property Type </label>
 
             <select id="search-type">
               <option value="">Any Type</option>
@@ -76,8 +118,9 @@
             </select>
           </div>
 
+          <!-- Price -->
           <div class="search-field">
-            <label>Price Range</label>
+            <label for="search-price"> Price Range </label>
 
             <select id="search-price">
               <option value="">Any Price</option>
@@ -87,8 +130,9 @@
             </select>
           </div>
 
+          <!-- Bedrooms -->
           <div class="search-field">
-            <label>Bedrooms</label>
+            <label for="search-bedrooms"> Bedrooms </label>
 
             <select id="search-bedrooms">
               <option value="">Any Beds</option>
@@ -100,9 +144,15 @@
             </select>
           </div>
 
-          <button class="search-btn" id="search-btn">Search</button>
+          <!-- Search Button -->
+          <button type="button" class="search-btn" id="search-btn">
+            Search
+          </button>
         </div>
 
+        <!-- =====================================
+             HERO STATS
+        ====================================== -->
         <div class="stats">
           <div class="stat">
             <h3>150K+</h3>
@@ -127,8 +177,12 @@
       </div>
     </section>
 
+    <!-- =========================================
+         FEATURED PROPERTIES
+    ========================================== -->
     <section class="featured-properties">
       <div class="container">
+        <!-- Section Header -->
         <div class="section-header">
           <span class="section-badge"> Featured Properties </span>
 
@@ -140,17 +194,68 @@
           </p>
         </div>
 
-        <!-- Properties will be loaded dynamically from MongoDB -->
-        <div class="property-grid" id="property-grid">
-          <!-- JavaScript will insert property cards here -->
+        <!-- =====================================
+             FEATURED PROPERTY VIEWPORT
+             
+             JavaScript will populate this area.
+             CSS/JS will handle:
+             - Desktop grid
+             - Tablet layout
+             - Mobile horizontal swipe
+             - Pagination
+        ====================================== -->
+        <div class="property-slider" id="property-slider">
+          <div class="property-grid" id="property-grid">
+            <!--
+              Properties are loaded dynamically
+              from MongoDB by JavaScript.
+            -->
+          </div>
+        </div>
+
+        <!-- =====================================
+             PROPERTY PAGINATION
+        ====================================== -->
+        <div
+          class="property-pagination"
+          id="property-pagination"
+          aria-label="Featured property pagination"
+        >
+          <!-- Previous -->
+          <button
+            type="button"
+            class="pagination-arrow"
+            id="property-prev"
+            aria-label="Previous properties"
+          >
+            <span aria-hidden="true">←</span>
+          </button>
+
+          <!-- Pagination Dots -->
+          <div class="pagination-dots" id="pagination-dots">
+            <!-- JavaScript generates dots -->
+          </div>
+
+          <!-- Next -->
+          <button
+            type="button"
+            class="pagination-arrow"
+            id="property-next"
+            aria-label="Next properties"
+          >
+            <span aria-hidden="true">→</span>
+          </button>
         </div>
       </div>
     </section>
 
+    <!-- =========================================
+         WHY CHOOSE US
+    ========================================== -->
     <section class="why-us">
       <div class="container">
         <div class="section-header">
-          <span class="section-badge">Why Choose Us</span>
+          <span class="section-badge"> Why Choose Us </span>
 
           <h2>Why Thousands Trust Lexo Property</h2>
 
@@ -161,48 +266,59 @@
         </div>
 
         <div class="why-grid">
+          <!-- Card 1 -->
           <div class="why-card">
             <div class="why-icon">🏠</div>
+
             <h3>Verified Properties</h3>
+
             <p>
               Every listing is carefully reviewed before appearing on our
               platform.
             </p>
           </div>
 
+          <!-- Card 2 -->
           <div class="why-card">
             <div class="why-icon">💰</div>
+
             <h3>Affordable Prices</h3>
+
             <p>
               We connect you with the best properties that match your budget.
             </p>
           </div>
 
+          <!-- Card 3 -->
           <div class="why-card">
             <div class="why-icon">🤝</div>
+
             <h3>Trusted Agents</h3>
+
             <p>
               Work directly with verified and experienced property consultants.
             </p>
           </div>
 
+          <!-- Card 4 -->
           <div class="why-card">
             <div class="why-icon">⚡</div>
+
             <h3>Fast Response</h3>
+
             <p>Get instant responses from property owners and agents.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================
-     TESTIMONIALS
-========================= -->
-
+    <!-- =========================================
+         TESTIMONIALS
+    ========================================== -->
     <section class="testimonials">
       <div class="container">
         <div class="section-header">
-          <span class="section-badge">Testimonials</span>
+          <span class="section-badge"> Testimonials </span>
 
           <h2>What Our Clients Say</h2>
 
@@ -213,6 +329,7 @@
         </div>
 
         <div class="testimonial-grid">
+          <!-- Testimonial 1 -->
           <div class="testimonial-card">
             <div class="stars">★★★★★</div>
 
@@ -224,11 +341,13 @@
             <div class="testimonial-user">
               <div>
                 <h4>Samuel Adeyemi</h4>
-                <span>Home Buyer</span>
+
+                <span> Home Buyer </span>
               </div>
             </div>
           </div>
 
+          <!-- Testimonial 2 -->
           <div class="testimonial-card">
             <div class="stars">★★★★★</div>
 
@@ -240,11 +359,13 @@
             <div class="testimonial-user">
               <div>
                 <h4>Grace Johnson</h4>
-                <span>Property Investor</span>
+
+                <span> Property Investor </span>
               </div>
             </div>
           </div>
 
+          <!-- Testimonial 3 -->
           <div class="testimonial-card">
             <div class="stars">★★★★★</div>
 
@@ -256,7 +377,8 @@
             <div class="testimonial-user">
               <div>
                 <h4>David Bello</h4>
-                <span>Tenant</span>
+
+                <span> Tenant </span>
               </div>
             </div>
           </div>
@@ -264,10 +386,9 @@
       </div>
     </section>
 
-    <!-- =========================
-     CALL TO ACTION
-========================= -->
-
+    <!-- =========================================
+         CALL TO ACTION
+    ========================================== -->
     <section class="cta-section">
       <div class="container">
         <div class="cta-content">
@@ -289,9 +410,13 @@
       </div>
     </section>
 
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
     <footer class="footer">
       <div class="container">
         <div class="footer-grid">
+          <!-- Footer Brand -->
           <div class="footer-brand">
             <img src="images/logo.png" alt="Lexo Property Logo" />
 
@@ -303,34 +428,51 @@
             </p>
           </div>
 
+          <!-- Footer Links -->
           <div class="footer-links">
             <h4>Quick Links</h4>
 
-            <a href="./index.html">Home</a>
-            <a href="./properties.html">Properties</a>
-            <a href="./services.html">Services</a>
-            <a href="./about.html">About Us</a>
-            <a href="./contact.html">Contact</a>
+            <a href="./index.html"> Home </a>
+
+            <a href="./properties.html"> Properties </a>
+
+            <a href="./services.html"> Services </a>
+
+            <a href="./about.html"> About Us </a>
+
+            <a href="./contact.html"> Contact </a>
           </div>
 
+          <!-- Footer Contact -->
           <div class="footer-contact">
             <h4>Contact Info</h4>
 
             <p>📍 Ibadan, Oyo State</p>
+
             <p>📞 +234 907 994 8293</p>
+
             <p>✉ lexoproperty@gmail.com</p>
           </div>
         </div>
 
+        <!-- Copyright -->
         <div class="footer-bottom">
           <p>© 2026 Lexo Property. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
-  </body>
 
-  <!-- JavaScript -->
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <!-- Property data / rendering -->
     <script src="js/properties.js"></script>
+
+    <!-- Homepage search -->
     <script src="js/home.js"></script>
 
+    <!-- Navbar / hamburger -->
+    <script src="js/navbar.js"></script>
+  </body>
 </html>
