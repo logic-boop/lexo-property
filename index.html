@@ -4,18 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>LEXO PROPERTY</title>
+    <meta
+      name="description"
+      content="Lexo Property - Find verified and affordable properties across Nigeria. Buy, rent or lease houses, apartments and land with confidence."
+    />
 
-    <!-- Google Fonts -->
+    <meta
+      name="keywords"
+      content="Lexo Property, properties in Nigeria, houses for sale, houses for rent, land for sale, apartments Nigeria, Ibadan properties, Lagos properties"
+    />
+
+    <meta name="author" content="Lexo Property" />
+
+    <title>LEXO PROPERTY | Find Your Dream Property</title>
+
+    <!-- ==========================
+         GOOGLE FONTS
+    =========================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Main Styles -->
+    <!-- ==========================
+         MAIN STYLES
+    =========================== -->
+
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
   </head>
@@ -24,33 +42,41 @@
     <!-- =========================================
          NAVBAR
     ========================================== -->
-    <header class="navbar">
+
+    <header class="navbar" id="navbar">
       <div class="container nav-container">
         <!-- Logo -->
-        <a href="./index.html" class="logo">
+
+        <a href="./index.html" class="logo" aria-label="Lexo Property Home">
           <img src="images/logo.png" alt="Lexo Property Logo" />
 
           <div class="logo-text">
             <h2>LEXO PROPERTY</h2>
-            <p>Affordable Property</p>
           </div>
         </a>
 
-        <!-- Desktop / Mobile Navigation -->
+        <!-- Navigation -->
+
         <nav class="nav-links" id="nav-links" aria-label="Main navigation">
           <a href="./index.html" class="active">Home</a>
+
           <a href="./properties.html">Properties</a>
+
           <a href="./services.html">Services</a>
+
           <a href="./about.html">About Us</a>
+
           <a href="./contact.html">Contact</a>
         </nav>
 
         <!-- Desktop Browse Button -->
+
         <a href="./properties.html" class="browse-btn desktop-browse-btn">
           Browse Properties
         </a>
 
-        <!-- Mobile / Tablet Menu Button -->
+        <!-- Mobile Menu Button -->
+
         <button
           type="button"
           class="menu-toggle"
@@ -69,354 +95,390 @@
     <!-- =========================================
          HERO SECTION
     ========================================== -->
-    <section class="hero">
-      <!-- Hero background/overlay is controlled by CSS -->
-      <div class="hero-overlay"></div>
 
-      <div class="container hero-content">
-        <!-- Hero Badge -->
-        <div class="badge">🏡 Nigeria's #1 Trusted Property Marketplace</div>
+    <main>
+      <section class="hero">
+        <div class="hero-overlay"></div>
 
-        <!-- Hero Heading -->
-        <h1>
-          Find Your Dream Home
-          <span>Without Stress.</span>
-        </h1>
+        <div class="container hero-content">
+          <!-- Badge -->
 
-        <!-- Hero Description -->
-        <p>Buy, rent or lease properties at affordable prices.</p>
-
-        <!-- =====================================
-             PROPERTY SEARCH
-             
-             This remains in the HTML.
-             CSS will hide/minimize it on smaller
-             screens.
-        ====================================== -->
-        <div class="search-card" id="property-search">
-          <!-- Location -->
-          <div class="search-field">
-            <label for="search-location"> Location </label>
-
-            <input
-              type="text"
-              id="search-location"
-              placeholder="Ibadan, Lagos, Abuja..."
-              autocomplete="off"
-            />
+          <div class="badge">
+            <span aria-hidden="true">🏡</span>
+            Nigeria's #1 Trusted Property Marketplace
           </div>
 
-          <!-- Property Type -->
-          <div class="search-field">
-            <label for="search-type"> Property Type </label>
+          <!-- Heading -->
 
-            <select id="search-type">
-              <option value="">Any Type</option>
-              <option value="House">House</option>
-              <option value="Land">Land</option>
-              <option value="Apartment">Apartment</option>
-            </select>
+          <h1>
+            Find Your Dream Home
+            <span>Without Stress.</span>
+          </h1>
+
+          <!-- Description -->
+
+          <p>Buy, rent or lease properties at affordable prices.</p>
+
+          <!-- =====================================
+               PROPERTY SEARCH
+          ====================================== -->
+
+          <div class="search-card" id="property-search" role="search">
+            <!-- Location -->
+
+            <div class="search-field">
+              <label for="search-location"> Location </label>
+
+              <input
+                type="text"
+                id="search-location"
+                name="location"
+                placeholder="Ibadan, Lagos, Abuja..."
+                autocomplete="off"
+              />
+            </div>
+
+            <!-- Property Type -->
+
+            <div class="search-field">
+              <label for="search-type"> Property Type </label>
+
+              <select id="search-type" name="propertyType">
+                <option value="">Any Type</option>
+
+                <option value="House">House</option>
+
+                <option value="Land">Land</option>
+
+                <option value="Apartment">Apartment</option>
+              </select>
+            </div>
+
+            <!-- Price -->
+
+            <div class="search-field">
+              <label for="search-price"> Price Range </label>
+
+              <select id="search-price" name="price">
+                <option value="">Any Price</option>
+
+                <option value="10000000">₦10,000,000+</option>
+
+                <option value="50000000">₦50,000,000+</option>
+
+                <option value="100000000">₦100,000,000+</option>
+              </select>
+            </div>
+
+            <!-- Bedrooms -->
+
+            <div class="search-field">
+              <label for="search-bedrooms"> Bedrooms </label>
+
+              <select id="search-bedrooms" name="bedrooms">
+                <option value="">Any Beds</option>
+
+                <option value="1">1 Bedroom</option>
+
+                <option value="2">2 Bedrooms</option>
+
+                <option value="3">3 Bedrooms</option>
+
+                <option value="4">4 Bedrooms</option>
+
+                <option value="5">5+ Bedrooms</option>
+              </select>
+            </div>
+
+            <!-- Search Button -->
+
+            <button type="button" class="search-btn" id="search-btn">
+              Search
+            </button>
           </div>
 
-          <!-- Price -->
-          <div class="search-field">
-            <label for="search-price"> Price Range </label>
+          <!-- =====================================
+               HERO STATS
+          ====================================== -->
 
-            <select id="search-price">
-              <option value="">Any Price</option>
-              <option value="10000000">₦10,000,000+</option>
-              <option value="50000000">₦50,000,000+</option>
-              <option value="100000000">₦100,000,000+</option>
-            </select>
-          </div>
+          <div class="stats">
+            <div class="stat">
+              <h3>150K+</h3>
+              <p>Verified Listings</p>
+            </div>
 
-          <!-- Bedrooms -->
-          <div class="search-field">
-            <label for="search-bedrooms"> Bedrooms </label>
+            <div class="stat">
+              <h3>17K+</h3>
+              <p>Trusted Agents</p>
+            </div>
 
-            <select id="search-bedrooms">
-              <option value="">Any Beds</option>
-              <option value="1">1 Bedroom</option>
-              <option value="2">2 Bedrooms</option>
-              <option value="3">3 Bedrooms</option>
-              <option value="4">4 Bedrooms</option>
-              <option value="5">5+ Bedrooms</option>
-            </select>
-          </div>
+            <div class="stat">
+              <h3>310+</h3>
+              <p>Locations</p>
+            </div>
 
-          <!-- Search Button -->
-          <button type="button" class="search-btn" id="search-btn">
-            Search
-          </button>
-        </div>
-
-        <!-- =====================================
-             HERO STATS
-        ====================================== -->
-        <div class="stats">
-          <div class="stat">
-            <h3>150K+</h3>
-            <p>Verified Listings</p>
-          </div>
-
-          <div class="stat">
-            <h3>17K+</h3>
-            <p>Trusted Agents</p>
-          </div>
-
-          <div class="stat">
-            <h3>310+</h3>
-            <p>Locations</p>
-          </div>
-
-          <div class="stat">
-            <h3>36</h3>
-            <p>States Covered</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================
-         FEATURED PROPERTIES
-    ========================================== -->
-    <section class="featured-properties">
-      <div class="container">
-        <!-- Section Header -->
-        <div class="section-header">
-          <span class="section-badge"> Featured Properties </span>
-
-          <h2>Explore Our Featured Properties</h2>
-
-          <p>
-            Discover affordable houses, duplexes and lands available in prime
-            locations.
-          </p>
-        </div>
-
-        <!-- =====================================
-             FEATURED PROPERTY VIEWPORT
-             
-             JavaScript will populate this area.
-             CSS/JS will handle:
-             - Desktop grid
-             - Tablet layout
-             - Mobile horizontal swipe
-             - Pagination
-        ====================================== -->
-        <div class="property-slider" id="property-slider">
-          <div class="property-grid" id="property-grid">
-            <!--
-              Properties are loaded dynamically
-              from MongoDB by JavaScript.
-            -->
+            <div class="stat">
+              <h3>36</h3>
+              <p>States Covered</p>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- =====================================
-             PROPERTY PAGINATION
-        ====================================== -->
-        <div
-          class="property-pagination"
-          id="property-pagination"
-          aria-label="Featured property pagination"
-        >
-          <!-- Previous -->
-          <button
-            type="button"
-            class="pagination-arrow"
-            id="property-prev"
-            aria-label="Previous properties"
+      <!-- =========================================
+           FEATURED PROPERTIES
+      ========================================== -->
+
+      <section class="featured-properties">
+        <div class="container">
+          <!-- Section Header -->
+
+          <div class="section-header">
+            <span class="section-badge"> Featured Properties </span>
+
+            <h2>Explore Our Featured Properties</h2>
+
+            <p>
+              Discover affordable houses, duplexes and lands available in prime
+              locations.
+            </p>
+          </div>
+
+          <!-- =====================================
+               PROPERTY SLIDER
+          ====================================== -->
+
+          <div class="property-slider" id="property-slider">
+            <div class="property-grid" id="property-grid">
+              <!--
+                Properties are dynamically loaded
+                by JavaScript.
+              -->
+            </div>
+          </div>
+
+          <!-- =====================================
+               PROPERTY PAGINATION
+          ====================================== -->
+
+          <div
+            class="property-pagination"
+            id="property-pagination"
+            aria-label="Featured property pagination"
           >
-            <span aria-hidden="true">←</span>
-          </button>
+            <!-- Previous -->
 
-          <!-- Pagination Dots -->
-          <div class="pagination-dots" id="pagination-dots">
-            <!-- JavaScript generates dots -->
+            <button
+              type="button"
+              class="pagination-arrow"
+              id="property-prev"
+              aria-label="Previous properties"
+            >
+              <span aria-hidden="true"> ← </span>
+            </button>
+
+            <!-- Pagination Dots -->
+
+            <div class="pagination-dots" id="pagination-dots">
+              <!-- JavaScript generates dots -->
+            </div>
+
+            <!-- Next -->
+
+            <button
+              type="button"
+              class="pagination-arrow"
+              id="property-next"
+              aria-label="Next properties"
+            >
+              <span aria-hidden="true"> → </span>
+            </button>
           </div>
-
-          <!-- Next -->
-          <button
-            type="button"
-            class="pagination-arrow"
-            id="property-next"
-            aria-label="Next properties"
-          >
-            <span aria-hidden="true">→</span>
-          </button>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- =========================================
-         WHY CHOOSE US
-    ========================================== -->
-    <section class="why-us">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-badge"> Why Choose Us </span>
+      <!-- =========================================
+           WHY CHOOSE US
+      ========================================== -->
 
-          <h2>Why Thousands Trust Lexo Property</h2>
+      <section class="why-us">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-badge"> Why Choose Us </span>
 
-          <p>
-            We help buyers, renters and investors find verified properties
-            quickly, safely and at affordable prices.
-          </p>
-        </div>
-
-        <div class="why-grid">
-          <!-- Card 1 -->
-          <div class="why-card">
-            <div class="why-icon">🏠</div>
-
-            <h3>Verified Properties</h3>
+            <h2>Why Thousands Trust Lexo Property</h2>
 
             <p>
-              Every listing is carefully reviewed before appearing on our
-              platform.
+              We help buyers, renters and investors find verified properties
+              quickly, safely and at affordable prices.
             </p>
           </div>
 
-          <!-- Card 2 -->
-          <div class="why-card">
-            <div class="why-icon">💰</div>
+          <div class="why-grid">
+            <!-- Card 1 -->
 
-            <h3>Affordable Prices</h3>
+            <article class="why-card">
+              <div class="why-icon" aria-hidden="true">🏠</div>
 
-            <p>
-              We connect you with the best properties that match your budget.
-            </p>
-          </div>
+              <h3>Verified Properties</h3>
 
-          <!-- Card 3 -->
-          <div class="why-card">
-            <div class="why-icon">🤝</div>
+              <p>
+                Every listing is carefully reviewed before appearing on our
+                platform.
+              </p>
+            </article>
 
-            <h3>Trusted Agents</h3>
+            <!-- Card 2 -->
 
-            <p>
-              Work directly with verified and experienced property consultants.
-            </p>
-          </div>
+            <article class="why-card">
+              <div class="why-icon" aria-hidden="true">💰</div>
 
-          <!-- Card 4 -->
-          <div class="why-card">
-            <div class="why-icon">⚡</div>
+              <h3>Affordable Prices</h3>
 
-            <h3>Fast Response</h3>
+              <p>
+                We connect you with the best properties that match your budget.
+              </p>
+            </article>
 
-            <p>Get instant responses from property owners and agents.</p>
+            <!-- Card 3 -->
+
+            <article class="why-card">
+              <div class="why-icon" aria-hidden="true">🤝</div>
+
+              <h3>Trusted Agents</h3>
+
+              <p>
+                Work directly with verified and experienced property
+                consultants.
+              </p>
+            </article>
+
+            <!-- Card 4 -->
+
+            <article class="why-card">
+              <div class="why-icon" aria-hidden="true">⚡</div>
+
+              <h3>Fast Response</h3>
+
+              <p>Get instant responses from property owners and agents.</p>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- =========================================
-         TESTIMONIALS
-    ========================================== -->
-    <section class="testimonials">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-badge"> Testimonials </span>
+      <!-- =========================================
+           TESTIMONIALS
+      ========================================== -->
 
-          <h2>What Our Clients Say</h2>
+      <section class="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-badge"> Testimonials </span>
 
-          <p>
-            Thousands of Nigerians trust Lexo Property to find affordable and
-            verified properties.
-          </p>
-        </div>
-
-        <div class="testimonial-grid">
-          <!-- Testimonial 1 -->
-          <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
+            <h2>What Our Clients Say</h2>
 
             <p>
-              "Lexo Property helped me buy my first house in Ibadan without
-              stress. Their agents were honest and professional."
+              Thousands of Nigerians trust Lexo Property to find affordable and
+              verified properties.
             </p>
+          </div>
 
-            <div class="testimonial-user">
-              <div>
-                <h4>Samuel Adeyemi</h4>
+          <div class="testimonial-grid">
+            <!-- Testimonial 1 -->
 
-                <span> Home Buyer </span>
+            <article class="testimonial-card">
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+
+              <p>
+                "Lexo Property helped me buy my first house in Ibadan without
+                stress. Their agents were honest and professional."
+              </p>
+
+              <div class="testimonial-user">
+                <div>
+                  <h4>Samuel Adeyemi</h4>
+
+                  <span> Home Buyer </span>
+                </div>
               </div>
+            </article>
+
+            <!-- Testimonial 2 -->
+
+            <article class="testimonial-card">
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+
+              <p>
+                "Very smooth process. Every property was genuine and exactly as
+                advertised."
+              </p>
+
+              <div class="testimonial-user">
+                <div>
+                  <h4>Grace Johnson</h4>
+
+                  <span> Property Investor </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Testimonial 3 -->
+
+            <article class="testimonial-card">
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+
+              <p>
+                "I found a beautiful apartment within two days. Highly
+                recommended!"
+              </p>
+
+              <div class="testimonial-user">
+                <div>
+                  <h4>David Bello</h4>
+
+                  <span> Tenant </span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+           CALL TO ACTION
+      ========================================== -->
+
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-content">
+            <h2>Ready To Find Your Dream Property?</h2>
+
+            <p>
+              Browse thousands of verified properties across Nigeria and
+              discover your perfect home today.
+            </p>
+
+            <div class="cta-buttons">
+              <a href="./properties.html" class="browse-btn">
+                Browse Properties
+              </a>
+
+              <a href="./contact.html" class="cta-outline"> Contact Us </a>
             </div>
           </div>
-
-          <!-- Testimonial 2 -->
-          <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
-
-            <p>
-              "Very smooth process. Every property was genuine and exactly as
-              advertised."
-            </p>
-
-            <div class="testimonial-user">
-              <div>
-                <h4>Grace Johnson</h4>
-
-                <span> Property Investor </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 3 -->
-          <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
-
-            <p>
-              "I found a beautiful apartment within two days. Highly
-              recommended!"
-            </p>
-
-            <div class="testimonial-user">
-              <div>
-                <h4>David Bello</h4>
-
-                <span> Tenant </span>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- =========================================
-         CALL TO ACTION
-    ========================================== -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-content">
-          <h2>Ready To Find Your Dream Property?</h2>
-
-          <p>
-            Browse thousands of verified properties across Nigeria and discover
-            your perfect home today.
-          </p>
-
-          <div class="cta-buttons">
-            <a href="./properties.html" class="browse-btn">
-              Browse Properties
-            </a>
-
-            <a href="./contact.html" class="cta-outline"> Contact Us </a>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <!-- =========================================
          FOOTER
     ========================================== -->
+
     <footer class="footer">
       <div class="container">
         <div class="footer-grid">
           <!-- Footer Brand -->
+
           <div class="footer-brand">
             <img src="images/logo.png" alt="Lexo Property Logo" />
 
@@ -429,6 +491,7 @@
           </div>
 
           <!-- Footer Links -->
+
           <div class="footer-links">
             <h4>Quick Links</h4>
 
@@ -444,6 +507,7 @@
           </div>
 
           <!-- Footer Contact -->
+
           <div class="footer-contact">
             <h4>Contact Info</h4>
 
@@ -451,11 +515,17 @@
 
             <p>📞 +234 907 994 8293</p>
 
-            <p>✉ lexoproperty@gmail.com</p>
+            <p>
+              ✉
+              <a href="mailto:lexoproperty@gmail.com">
+                lexoproperty@gmail.com
+              </a>
+            </p>
           </div>
         </div>
 
         <!-- Copyright -->
+
         <div class="footer-bottom">
           <p>© 2026 Lexo Property. All Rights Reserved.</p>
         </div>
@@ -467,12 +537,15 @@
     ========================================== -->
 
     <!-- Property data / rendering -->
+
     <script src="js/properties.js"></script>
 
     <!-- Homepage search -->
+
     <script src="js/home.js"></script>
 
     <!-- Navbar / hamburger -->
+
     <script src="js/navbar.js"></script>
   </body>
 </html>

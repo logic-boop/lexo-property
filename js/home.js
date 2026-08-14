@@ -1,41 +1,84 @@
 // ===================================
-// LEXO PROPERTY HOMEPAGE SEARCH
+// LEXO PROPERTY
+// HOMEPAGE PROPERTY SEARCH
 // ===================================
 
-const homeSearchBtn = document.getElementById("search-btn");
+document.addEventListener("DOMContentLoaded", () => {
+  const searchForm = document.getElementById("property-search");
+  const searchButton = document.getElementById("search-btn");
 
-if (homeSearchBtn) {
-  homeSearchBtn.addEventListener("click", () => {
+  if (!searchButton) {
+    return;
+  }
+
+  // ===================================
+  // GET SEARCH VALUES
+  // ===================================
+
+  function getSearchValues() {
     const locationInput = document.getElementById("search-location");
+
     const typeInput = document.getElementById("search-type");
+
     const priceInput = document.getElementById("search-price");
+
     const bedroomsInput = document.getElementById("search-bedrooms");
 
-    const location = locationInput
-      ? locationInput.value.trim()
-      : "";
+    return {
+      location: locationInput ? locationInput.value.trim() : "",
 
-    const type = typeInput ? typeInput.value : "";
-    const price = priceInput ? priceInput.value : "";
-    const bedrooms = bedroomsInput ? bedroomsInput.value : "";
+      type: typeInput ? typeInput.value : "",
+
+      price: priceInput ? priceInput.value : "",
+
+      bedrooms: bedroomsInput ? bedroomsInput.value : "",
+    };
+  }
+
+  // ===================================
+  // PERFORM SEARCH
+  // ===================================
+
+  function performSearch() {
+    const { location, type, price, bedrooms } = getSearchValues();
 
     const params = new URLSearchParams();
 
+    // ---------------------------------
+    // LOCATION
+    // ---------------------------------
+
     if (location) {
-      params.append("location", location);
+      params.set("location", location);
     }
+
+    // ---------------------------------
+    // PROPERTY TYPE
+    // ---------------------------------
 
     if (type) {
-      params.append("type", type);
+      params.set("type", type);
     }
+
+    // ---------------------------------
+    // PRICE
+    // ---------------------------------
 
     if (price) {
-      params.append("price", price);
+      params.set("price", price);
     }
 
+    // ---------------------------------
+    // BEDROOMS
+    // ---------------------------------
+
     if (bedrooms) {
-      params.append("bedrooms", bedrooms);
+      params.set("bedrooms", bedrooms);
     }
+
+    // ===================================
+    // BUILD DESTINATION
+    // ===================================
 
     const queryString = params.toString();
 
@@ -43,14 +86,59 @@ if (homeSearchBtn) {
       ? `properties.html?${queryString}`
       : "properties.html";
 
-    console.log("========== LEXO SEARCH ==========");
+    // ===================================
+    // DEBUG INFORMATION
+    // ===================================
+
+    console.log("========== LEXO PROPERTY SEARCH ==========");
+
     console.log("Location:", location || "Any Location");
+
     console.log("Type:", type || "Any Type");
+
     console.log("Price:", price || "Any Price");
-    console.log("Bedrooms:", bedrooms || "Any Beds");
+
+    console.log("Bedrooms:", bedrooms || "Any Bedrooms");
+
     console.log("Destination:", destination);
-    console.log("=================================");
+
+    console.log("==========================================");
+
+    // ===================================
+    // REDIRECT
+    // ===================================
 
     window.location.href = destination;
+  }
+
+  // ===================================
+  // SEARCH BUTTON
+  // ===================================
+
+  searchButton.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    performSearch();
   });
-}
+
+  // ===================================
+  // ENTER KEY SUPPORT
+  // ===================================
+
+  if (searchForm) {
+    searchForm.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") {
+        return;
+      }
+
+      /*
+          Prevent the Enter key from submitting
+          unexpectedly while the user is typing.
+        */
+
+      event.preventDefault();
+
+      performSearch();
+    });
+  }
+});

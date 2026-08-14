@@ -1,85 +1,116 @@
 /* =========================================================
-   LEXO PROPERTY - RESPONSIVE DESIGN
-   ========================================================= */
+   LEXO PROPERTY — RESPONSIVE STYLES
+   Works with index.html + style.css
+========================================================= */
 
 /* =========================================================
    LARGE TABLETS / SMALL LAPTOPS
    1200px and below
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 1200px) {
   .container {
     width: 92%;
   }
 
-  /* NAVBAR */
+  /* ==========================
+     NAVBAR
+  ========================== */
 
   .nav-links {
-    gap: 24px;
+    gap: 25px;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
   }
 
   .browse-btn {
-    padding: 13px 22px;
+    padding: 13px 24px;
   }
 
-  /* HERO */
+  /* ==========================
+     HERO
+  ========================== */
 
   .hero h1 {
     font-size: 2.7rem;
   }
 
+  .hero p {
+    font-size: 1.05rem;
+  }
+
   .search-card {
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1.7fr 1fr 1fr 1fr auto;
+    gap: 12px;
+    padding: 24px;
   }
 
+  .search-field input,
+  .search-field select,
   .search-btn {
-    grid-column: 1 / -1;
-    width: 100%;
+    height: 54px;
   }
 
-  /* PROPERTY GRID */
+  /* ==========================
+     PROPERTY CARDS
+  ========================== */
 
   .property-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 25px;
   }
 
-  /* WHY US */
+  .property-card {
+    flex: 0 0 calc((100% - 50px) / 3);
+  }
+
+  /* ==========================
+     WHY US
+  ========================== */
 
   .why-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 
-  /* TESTIMONIALS */
-
-  .testimonial-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* SERVICES */
+  /* ==========================
+     SERVICES
+  ========================== */
 
   .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
   }
 
-  /* DASHBOARD */
+  /* ==========================
+     PROPERTY DETAILS
+  ========================== */
 
-  .dashboard-cards {
-    grid-template-columns: repeat(2, 1fr);
+  .property-details-page .container {
+    gap: 35px;
+  }
+
+  .property-image img {
+    height: 500px;
   }
 }
 
 /* =========================================================
    TABLETS
-   991px and below
-   ========================================================= */
+   992px and below
+========================================================= */
 
-@media (max-width: 991px) {
+@media (max-width: 992px) {
+  /* ==========================
+     GLOBAL
+  ========================== */
+
   .container {
     width: 92%;
   }
 
-  /* NAVBAR */
+  /* ==========================
+     NAVBAR
+  ========================== */
 
   .nav-container {
     height: 80px;
@@ -94,10 +125,6 @@
     font-size: 1.2rem;
   }
 
-  .logo-text p {
-    font-size: 0.8rem;
-  }
-
   .nav-links {
     gap: 18px;
   }
@@ -106,19 +133,17 @@
     font-size: 0.9rem;
   }
 
-  .browse-btn {
-    padding: 12px 18px;
-    font-size: 0.9rem;
+  .desktop-browse-btn {
+    padding: 11px 18px;
+    font-size: 0.85rem;
   }
 
-  /* HERO */
-
-  .hero {
-    min-height: auto;
-  }
+  /* ==========================
+     HERO
+  ========================== */
 
   .hero-content {
-    padding: 70px 0 60px;
+    padding: 55px 0 50px;
   }
 
   .hero h1 {
@@ -126,22 +151,40 @@
   }
 
   .hero p {
-    font-size: 1rem;
     margin: 22px auto 35px;
   }
 
-  /* SEARCH */
-
   .search-card {
-    grid-template-columns: 1fr 1fr;
-    padding: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
 
-  .search-btn {
+  .search-card .search-field:first-child {
     grid-column: 1 / -1;
   }
 
-  /* SECTION HEADINGS */
+  .search-btn {
+    width: 100%;
+  }
+
+  .stats {
+    margin-top: 55px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* ==========================
+     SECTION SPACING
+  ========================== */
+
+  .featured-properties,
+  .why-us,
+  .testimonials,
+  .services-section,
+  .about-section,
+  .contact-section {
+    padding: 90px 0;
+  }
 
   .section-header {
     margin-bottom: 50px;
@@ -151,7 +194,58 @@
     font-size: 2.4rem;
   }
 
-  /* PAGE HERO */
+  /* ==========================
+     PROPERTY GRID
+  ========================== */
+
+  .property-card {
+    flex: 0 0 calc((100% - 25px) / 2);
+  }
+
+  .property-card img {
+    height: 240px;
+  }
+
+  /* ==========================
+     WHY CHOOSE US
+  ========================== */
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ==========================
+     TESTIMONIALS
+  ========================== */
+
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonial-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* ==========================
+     SERVICES
+  ========================== */
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ==========================
+     CONTACT
+  ========================== */
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  /* ==========================
+     PAGE HERO
+  ========================== */
 
   .page-hero {
     padding: 90px 0;
@@ -161,168 +255,300 @@
     font-size: 3.2rem;
   }
 
-  /* SERVICES */
+  /* ==========================
+     PROPERTY DETAILS
+  ========================== */
 
-  .services-grid {
+  .property-details-page .container {
+    grid-template-columns: 1fr;
+  }
+
+  .property-image img {
+    height: 450px;
+  }
+
+  /* ==========================
+     ADMIN DASHBOARD
+  ========================== */
+
+  .dashboard {
+    padding: 60px 0;
+  }
+
+  .dashboard-cards {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* ABOUT */
-
-  .about-section {
-    padding: 90px 0;
+  .dashboard-card:last-child {
+    grid-column: 1 / -1;
   }
 
-  /* DASHBOARD */
-
-  .dashboard-header {
-    align-items: flex-start;
-    gap: 20px;
-  }
-
-  .dashboard-header h1 {
-    font-size: 2.2rem;
-  }
-
-  .recent-properties {
-    overflow-x: auto;
-  }
-
-  table {
-    min-width: 700px;
+  .admin-section {
+    padding: 25px;
   }
 }
 
 /* =========================================================
-   MOBILE
+   MOBILE NAVIGATION
    768px and below
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 768px) {
-  /* GENERAL */
+  /* ==========================
+     GLOBAL
+  ========================== */
 
-  .container {
-    width: 92%;
+  html {
+    overflow-x: hidden;
   }
 
-  /* =======================================================
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  /* ==========================
      NAVBAR
-     ======================================================= */
+  ========================== */
 
   .nav-container {
     height: 75px;
+    position: relative;
   }
 
   .logo img {
-    width: 55px;
-    height: 55px;
+    width: 58px;
+    height: 58px;
   }
 
   .logo-text h2 {
+    font-size: 1.05rem;
+  }
+
+  /* Hide desktop navigation */
+
+  .nav-links {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+
+    background: #ffffff;
+
+    border-top: 1px solid #e5e7eb;
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+
+    padding: 10px 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  /* Open navigation */
+
+  .nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 15px 5%;
     font-size: 1rem;
   }
 
-  .logo-text p {
-    font-size: 0.7rem;
-  }
-
-  .nav-links {
+  .nav-links a::after {
     display: none;
   }
 
-  .nav-container > .browse-btn {
+  .nav-links a:hover {
+    background: #f9fafb;
+  }
+
+  .nav-links a.active {
+    color: var(--primary-green);
+  }
+
+  /* Hide desktop browse button */
+
+  .desktop-browse-btn {
     display: none;
   }
 
-  /* =======================================================
+  /* ==========================
+     HAMBURGER
+  ========================== */
+
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+
+    padding: 8px;
+  }
+
+  .menu-toggle span {
+    display: block;
+
+    width: 25px;
+    height: 2.5px;
+
+    background: #111827;
+
+    border-radius: 10px;
+
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease,
+      width 0.3s ease;
+  }
+
+  /* Hamburger → X */
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+
+  /* ==========================
      HERO
-     ======================================================= */
+  ========================== */
+
+  .hero {
+    min-height: auto;
+  }
 
   .hero-content {
-    padding: 55px 0 45px;
+    padding: 50px 0 45px;
   }
 
   .badge {
-    font-size: 0.75rem;
-    padding: 7px 14px;
+    font-size: 0.78rem;
+    padding: 8px 15px;
   }
 
   .hero h1 {
-    font-size: 2rem;
-    line-height: 1.2;
     margin-top: 22px;
+    font-size: 2.15rem;
+    line-height: 1.2;
   }
 
   .hero p {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.7;
     margin: 18px auto 30px;
   }
 
-  /* =======================================================
-     SEARCH CARD
-     ======================================================= */
+  /* ==========================
+     SEARCH
+  ========================== */
 
   .search-card {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    grid-template-columns: 1fr;
     padding: 20px;
     border-radius: 18px;
+    gap: 15px;
   }
 
-  .search-field {
-    width: 100%;
+  .search-card .search-field:first-child {
+    grid-column: auto;
   }
 
   .search-field label {
-    font-size: 0.8rem;
     margin-bottom: 7px;
+    font-size: 0.82rem;
   }
 
   .search-field input,
-  .search-field select {
+  .search-field select,
+  .search-btn {
     height: 52px;
-    font-size: 0.9rem;
-    border-radius: 12px;
   }
 
   .search-btn {
     width: 100%;
-    height: 52px;
-    padding: 0 20px;
-    border-radius: 12px;
   }
 
-  /* =======================================================
+  /* ==========================
      STATS
-     ======================================================= */
+  ========================== */
 
   .stats {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 12px;
     margin-top: 35px;
   }
 
+  .stat {
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
+
   .stat h3 {
-    font-size: 1.5rem;
+    font-size: 1.65rem;
   }
 
   .stat p {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
-  /* =======================================================
-     SECTION HEADERS
-     ======================================================= */
+  /* ==========================
+     SECTIONS
+  ========================== */
+
+  .featured-properties,
+  .why-us,
+  .testimonials,
+  .services-section,
+  .about-section,
+  .contact-section {
+    padding: 70px 0;
+  }
 
   .section-header {
     margin-bottom: 40px;
   }
 
   .section-badge {
-    font-size: 0.8rem;
     padding: 8px 16px;
+    font-size: 0.8rem;
   }
 
   .section-header h2 {
@@ -331,21 +557,36 @@
   }
 
   .section-header p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     line-height: 1.7;
   }
 
-  /* =======================================================
-     PROPERTY GRID
-     ======================================================= */
+  /* ==========================
+     PROPERTY CAROUSEL
+  ========================== */
+
+  .property-slider {
+    width: 100%;
+    overflow: hidden;
+  }
 
   .property-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 15px;
+
+    overflow: visible;
+
+    touch-action: pan-y;
+
+    cursor: grab;
   }
 
   .property-card {
-    border-radius: 18px;
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .property-card:hover {
+    transform: none;
   }
 
   .property-card img {
@@ -357,33 +598,57 @@
   }
 
   .property-price {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
   .property-content h3 {
     font-size: 1.2rem;
   }
 
+  .property-content p {
+    font-size: 0.9rem;
+  }
+
   .property-features {
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .property-features span {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    padding: 7px 10px;
   }
 
-  /* =======================================================
+  /* ==========================
+     PAGINATION
+  ========================== */
+
+  .property-pagination {
+    margin-top: 30px;
+    gap: 15px;
+  }
+
+  .pagination-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+
+  .pagination-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .pagination-dot.active {
+    width: 20px;
+  }
+
+  /* ==========================
      WHY US
-     ======================================================= */
-
-  .why-us {
-    padding: 80px 0;
-  }
+  ========================== */
 
   .why-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 18px;
     margin-top: 40px;
   }
 
@@ -391,57 +656,102 @@
     padding: 30px 25px;
   }
 
-  /* =======================================================
-     TESTIMONIALS
-     ======================================================= */
-
-  .testimonials {
-    padding: 80px 0;
+  .why-icon {
+    width: 65px;
+    height: 65px;
+    font-size: 1.6rem;
   }
+
+  /* ==========================
+     TESTIMONIALS
+  ========================== */
 
   .testimonial-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 18px;
+  }
+
+  .testimonial-card:last-child {
+    grid-column: auto;
   }
 
   .testimonial-card {
-    padding: 28px;
+    padding: 25px;
   }
 
-  /* =======================================================
+  .testimonial-card:hover {
+    transform: none;
+  }
+
+  /* ==========================
      CTA
-     ======================================================= */
+  ========================== */
 
   .cta-section {
-    padding: 80px 0;
+    padding: 75px 0;
   }
 
   .cta-content h2 {
     font-size: 2rem;
-    line-height: 1.3;
+    line-height: 1.25;
   }
 
   .cta-content p {
     font-size: 0.95rem;
     line-height: 1.7;
+    margin-bottom: 30px;
   }
 
   .cta-buttons {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
   }
 
-  .cta-buttons a {
+  .cta-buttons .browse-btn,
+  .cta-buttons .cta-outline {
     width: 100%;
     text-align: center;
   }
 
-  /* =======================================================
+  /* ==========================
+     FOOTER
+  ========================== */
+
+  .footer {
+    padding: 60px 0 25px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .footer-brand img {
+    width: 60px;
+  }
+
+  .footer-brand h3 {
+    font-size: 1.35rem;
+  }
+
+  .footer-links,
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-bottom {
+    margin-top: 35px;
+    padding-top: 20px;
+    font-size: 0.85rem;
+  }
+
+  /* ==========================
      PAGE HERO
-     ======================================================= */
+  ========================== */
 
   .page-hero {
-    padding: 70px 0;
+    padding: 70px 20px;
   }
 
   .page-hero h1 {
@@ -450,46 +760,112 @@
 
   .page-hero p {
     font-size: 1rem;
-    line-height: 1.6;
-    padding: 0 10px;
+    line-height: 1.7;
   }
 
-  /* =======================================================
+  /* ==========================
      SERVICES
-     ======================================================= */
-
-  .services-section {
-    padding: 80px 0;
-  }
+  ========================== */
 
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 18px;
   }
 
   .service-card {
     padding: 30px 25px;
   }
 
-  /* =======================================================
+  /* ==========================
      ABOUT
-     ======================================================= */
+  ========================== */
 
-  .about-section {
-    padding: 80px 0;
+  .about-content h2 {
+    font-size: 1.6rem;
   }
 
-  /* =======================================================
-     DASHBOARD
-     ======================================================= */
+  .about-content p {
+    font-size: 0.95rem;
+  }
+
+  /* ==========================
+     PROPERTY DETAILS
+  ========================== */
+
+  .property-details-page {
+    padding: 55px 0;
+  }
+
+  .property-details-page .container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .property-image img {
+    height: 320px;
+    border-radius: 16px;
+  }
+
+  .property-info h1 {
+    font-size: 2rem;
+  }
+
+  .property-info h2 {
+    font-size: 1.7rem;
+  }
+
+  .property-details-page .property-features {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 25px 0;
+  }
+
+  .property-details-page .property-features div {
+    padding: 15px 8px;
+  }
+
+  .property-details-page .property-features span {
+    font-size: 1.15rem;
+  }
+
+  .property-description {
+    margin-top: 30px;
+  }
+
+  .property-actions {
+    flex-direction: column;
+    margin-top: 30px;
+  }
+
+  .property-actions a {
+    width: 100%;
+    flex: none;
+  }
+
+  /* ==========================
+     RELATED PROPERTIES
+  ========================== */
+
+  .related-properties {
+    padding: 60px 0;
+  }
+
+  .related-properties h2 {
+    font-size: 1.8rem;
+    margin-bottom: 35px;
+  }
+
+  /* ==========================
+     ADMIN DASHBOARD
+  ========================== */
 
   .dashboard {
-    padding: 50px 0;
+    padding: 45px 0;
   }
 
   .dashboard-header {
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
   }
 
   .dashboard-header h1 {
@@ -497,76 +873,137 @@
   }
 
   .add-property-btn {
+    width: 100%;
     text-align: center;
   }
 
   .dashboard-cards {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 15px;
   }
 
-  .dashboard-card {
-    padding: 25px;
+  .dashboard-card:last-child {
+    grid-column: auto;
   }
+
+  .recent-properties {
+    padding: 20px;
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  /* ==========================
+     ADMIN FORM
+  ========================== */
 
   .admin-section {
-    padding: 25px 20px;
+    padding: 22px;
   }
 
-  /* =======================================================
-     ADMIN LOGIN
-     ======================================================= */
+  #property-form {
+    grid-template-columns: 1fr;
+  }
+
+  #property-form textarea,
+  #property-form button {
+    grid-column: auto;
+  }
+
+  /* ==========================
+     TABLE CONTROLS
+  ========================== */
+
+  .table-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .table-controls {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .table-controls input,
+  .table-controls select {
+    width: 100%;
+  }
+
+  /* ==========================
+     LOGIN
+  ========================== */
+
+  .admin-login {
+    padding: 25px 15px;
+  }
 
   .login-card {
-    padding: 35px 25px;
+    padding: 30px 22px;
   }
 }
 
 /* =========================================================
    SMALL PHONES
    480px and below
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 480px) {
+  /* ==========================
+     GLOBAL
+  ========================== */
+
   .container {
-    width: 94%;
+    width: 92%;
   }
 
-  /* LOGO */
+  /* ==========================
+     NAVBAR
+  ========================== */
+
+  .nav-container {
+    height: 70px;
+  }
+
+  .nav-links {
+    top: 70px;
+  }
 
   .logo img {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
   }
 
   .logo-text h2 {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
-  .logo-text p {
-    font-size: 0.65rem;
-  }
-
-  /* HERO */
+  /* ==========================
+     HERO
+  ========================== */
 
   .hero-content {
-    padding: 45px 0 35px;
+    padding: 40px 0;
   }
 
   .badge {
-    font-size: 0.68rem;
-    padding: 6px 11px;
+    font-size: 0.7rem;
+    padding: 7px 12px;
   }
 
   .hero h1 {
-    font-size: 1.65rem;
+    font-size: 1.85rem;
   }
 
   .hero p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
-  /* SEARCH */
+  /* ==========================
+     SEARCH
+  ========================== */
 
   .search-card {
     padding: 16px;
@@ -574,41 +1011,56 @@
   }
 
   .search-field input,
-  .search-field select {
-    height: 48px;
-    font-size: 0.85rem;
-  }
-
+  .search-field select,
   .search-btn {
-    height: 48px;
+    height: 50px;
     font-size: 0.9rem;
   }
 
-  /* STATS */
+  /* ==========================
+     STATS
+  ========================== */
 
   .stats {
-    gap: 12px;
+    gap: 8px;
+  }
+
+  .stat {
+    padding: 16px 10px;
   }
 
   .stat h3 {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
   }
 
   .stat p {
-    font-size: 0.68rem;
+    font-size: 0.7rem;
   }
 
-  /* SECTION HEADINGS */
+  /* ==========================
+     SECTIONS
+  ========================== */
+
+  .featured-properties,
+  .why-us,
+  .testimonials,
+  .services-section,
+  .about-section,
+  .contact-section {
+    padding: 55px 0;
+  }
 
   .section-header h2 {
-    font-size: 1.65rem;
+    font-size: 1.7rem;
   }
 
   .section-header p {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
   }
 
-  /* PROPERTY CARD */
+  /* ==========================
+     PROPERTY CARD
+  ========================== */
 
   .property-card img {
     height: 210px;
@@ -619,461 +1071,118 @@
   }
 
   .property-price {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 
-  .property-features {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  .property-content h3 {
+    font-size: 1.1rem;
   }
 
-  /* PAGE HERO */
-
-  .page-hero {
-    padding: 55px 0;
-  }
-
-  .page-hero h1 {
-    font-size: 2rem;
-  }
-
-  .page-hero p {
+  .property-content p {
     font-size: 0.85rem;
   }
 
-  /* CTA */
-
-  .cta-section {
-    padding: 60px 0;
+  .property-btn {
+    padding: 13px;
+    font-size: 0.9rem;
   }
+
+  /* ==========================
+     PROPERTY DETAILS
+  ========================== */
+
+  .property-image img {
+    height: 260px;
+  }
+
+  .property-info h1 {
+    font-size: 1.7rem;
+  }
+
+  .property-info h2 {
+    font-size: 1.45rem;
+  }
+
+  .property-details-page .property-features {
+    grid-template-columns: 1fr;
+  }
+
+  /* ==========================
+     CTA
+  ========================== */
 
   .cta-content h2 {
     font-size: 1.7rem;
   }
 
   .cta-content p {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
   }
 
-  /* LOGIN */
+  /* ==========================
+     PAGE HERO
+  ========================== */
+
+  .page-hero {
+    padding: 55px 15px;
+  }
+
+  .page-hero h1 {
+    font-size: 2rem;
+  }
+
+  /* ==========================
+     ADMIN
+  ========================== */
+
+  .dashboard-header h1 {
+    font-size: 1.7rem;
+  }
+
+  .dashboard-card h2 {
+    font-size: 1.7rem;
+  }
+
+  .admin-section {
+    padding: 18px;
+  }
 
   .login-card {
-    padding: 30px 20px;
-    border-radius: 18px;
+    padding: 25px 18px;
   }
 }
 
 /* =========================================================
    VERY SMALL PHONES
    360px and below
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 360px) {
-  .logo-text {
-    display: none;
-  }
-
-  .hero h1 {
-    font-size: 1.45rem;
-  }
-
-  .search-card {
-    padding: 13px;
-  }
-
-  .section-header h2 {
-    font-size: 1.45rem;
-  }
-
-  .property-card img {
-    height: 190px;
-  }
-}
-
-/* =========================================================
-   LEXO PROPERTY RESPONSIVE NAVIGATION
-   ========================================================= */
-
-/* ==========================================
-   TABLET / SMALL LAPTOP
-   ========================================== */
-
-@media (max-width: 1024px) {
-  .nav-container {
-    height: 78px;
-  }
-
-  .logo img {
-    width: 62px;
-    height: 62px;
+  .container {
+    width: 94%;
   }
 
   .logo-text h2 {
-    font-size: 1.2rem;
-  }
-
-  .logo-text p {
-    font-size: 0.78rem;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .desktop-browse-btn {
-    display: none;
-  }
-
-  .menu-toggle {
-    width: 46px;
-    height: 46px;
-    border: none;
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  .menu-toggle span {
-    width: 27px;
-    height: 3px;
-    background: #111827;
-    border-radius: 999px;
-    transition: 0.3s ease;
-  }
-
-  .menu-toggle.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  .nav-links.active {
-    display: flex;
-    position: absolute;
-    top: 78px;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 15px 5%;
-    border-top: 1px solid #e5e7eb;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-  }
-
-  .nav-links.active a {
-    padding: 15px 10px;
-    width: 100%;
-  }
-
-  .nav-links.active a::after {
-    display: none;
-  }
-}
-
-/* ==========================================
-   MOBILE
-   ========================================== */
-
-@media (max-width: 768px) {
-  .nav-container {
-    height: 70px;
-  }
-
-  .logo img {
-    width: 52px;
-    height: 52px;
-  }
-
-  .logo-text h2 {
-    font-size: 1rem;
-  }
-
-  .logo-text p {
-    font-size: 0.7rem;
-  }
-
-  .nav-links.active {
-    top: 70px;
-  }
-}
-
-/* =========================================================
-   HERO RESPONSIVENESS
-   ========================================================= */
-
-@media (max-width: 1024px) {
-  .hero {
-    min-height: auto;
-  }
-
-  .hero-content {
-    padding: 60px 0;
+    font-size: 0.85rem;
   }
 
   .hero h1 {
-    font-size: 2.7rem;
-  }
-
-  .search-card {
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-  }
-
-  .search-btn {
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    min-height: 420px;
-  }
-
-  .hero-content {
-    padding: 55px 0;
-  }
-
-  .badge {
-    font-size: 0.72rem;
-    padding: 7px 14px;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-top: 20px;
-  }
-
-  .hero p {
-    font-size: 0.95rem;
-    margin: 18px auto 0;
-    line-height: 1.6;
-  }
-
-  /* Remove homepage search on mobile */
-  .search-card {
-    display: none;
+    font-size: 1.65rem;
   }
 
   .stats {
-    margin-top: 35px;
-  }
-}
-
-/* =========================================================
-   FEATURED PROPERTY PAGINATION
-   ========================================================= */
-
-.property-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 22px;
-  margin-top: 45px;
-}
-
-.pagination-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.pagination-dot {
-  width: 9px;
-  height: 9px;
-  padding: 0;
-  border: none;
-  border-radius: 50%;
-  background: #d1d5db;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.pagination-dot.active {
-  width: 25px;
-  border-radius: 999px;
-  background: var(--primary-green);
-}
-
-.pagination-arrow {
-  width: 42px;
-  height: 42px;
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-  color: #111827;
-  border-radius: 50%;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.pagination-arrow:hover {
-  background: var(--primary-green);
-  color: #ffffff;
-  border-color: var(--primary-green);
-}
-
-.pagination-arrow:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-/* ==========================================
-   TABLET FEATURED PROPERTIES
-   ========================================== */
-
-@media (max-width: 1024px) {
-  .property-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    gap: 20px;
-    padding: 10px 5px 25px;
-    scrollbar-width: none;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .property-grid::-webkit-scrollbar {
-    display: none;
+  .stat h3 {
+    font-size: 1.2rem;
   }
 
-  .property-card {
-    flex: 0 0 calc(50% - 10px);
-    scroll-snap-align: start;
-  }
-}
-
-/* ==========================================
-   MOBILE FEATURED PROPERTIES
-   ========================================== */
-
-@media (max-width: 768px) {
-  .featured-properties {
-    padding: 70px 0;
-  }
-
-  .section-header {
-    margin-bottom: 35px;
+  .stat p {
+    font-size: 0.65rem;
   }
 
   .section-header h2 {
-    font-size: 2rem;
-  }
-
-  .section-header p {
-    font-size: 0.9rem;
-  }
-
-  .property-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 18px;
-    padding: 5px 3px 20px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .property-card {
-    flex: 0 0 88%;
-    scroll-snap-align: center;
-  }
-
-  .property-card img {
-    height: 220px;
-  }
-
-  .property-content {
-    padding: 20px;
-  }
-
-  .property-price {
-    font-size: 1.3rem;
-  }
-
-  .property-features {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .property-pagination {
-    margin-top: 25px;
-    gap: 15px;
-  }
-}
-
-/* =========================================================
-   FOOTER RESPONSIVENESS
-   ========================================================= */
-
-@media (max-width: 1024px) {
-  .footer {
-    padding: 70px 0 25px;
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 45px;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer {
-    padding: 60px 0 20px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .footer-brand,
-  .footer-links,
-  .footer-contact {
-    width: 100%;
-  }
-
-  .footer-brand {
-    text-align: center;
-  }
-
-  .footer-brand img {
-    margin: 0 auto 15px;
-  }
-
-  .footer-links h4,
-  .footer-contact h4 {
-    margin-bottom: 15px;
-  }
-
-  .footer-links a {
-    display: block;
-    margin-bottom: 10px;
-  }
-
-  .footer-contact p {
-    margin-bottom: 10px;
-  }
-
-  .footer-bottom {
-    margin-top: 35px;
-    padding-top: 20px;
-    font-size: 0.8rem;
-    text-align: center;
+    font-size: 1.5rem;
   }
 }
