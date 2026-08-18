@@ -160,7 +160,7 @@ textarea {
   align-items: center;
   background:
     linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
-    url("../images/properties/housee.jpg") center/cover no-repeat;
+    url("../images/properties/house.jpg") center/cover no-repeat;
 }
 
 .hero::before {
