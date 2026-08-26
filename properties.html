@@ -6,60 +6,156 @@
 
     <title>Properties | Lexo Property</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
   </head>
 
   <body>
-    <!-- NAVBAR -->
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
     <header class="navbar">
       <div class="container nav-container">
+        <!-- Logo -->
         <a href="index.html" class="logo">
-          <img src="images/logo.png" alt="Lexo Property" />
+          <img src="images/logo.png" alt="Lexo Property Logo" />
 
           <div class="logo-text">
             <h2>LEXO PROPERTY</h2>
+
             <p>Affordable Property</p>
           </div>
         </a>
 
-        <nav class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="properties.html">Properties</a>
-          <a href="services.html">Services</a>
-          <a href="about.html">About Us</a>
-          <a href="contact.html">Contact</a>
+        <!-- Navigation -->
+        <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+          <a href="index.html"> Home </a>
+
+          <a href="properties.html" class="active"> Properties </a>
+
+          <a href="services.html"> Services </a>
+
+          <a href="about.html"> About Us </a>
+
+          <a href="contact.html"> Contact </a>
         </nav>
 
-        <a href="properties.html" class="browse-btn"> Browse Properties </a>
+        <!-- Desktop Browse Button -->
+        <a href="properties.html" class="browse-btn desktop-browse-btn">
+          Browse Properties
+        </a>
+
+        <!-- Mobile Menu -->
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
-    <!-- PAGE HERO -->
+    <!-- =========================================
+         PROPERTIES PAGE
+    ========================================== -->
 
-    <section class="page-hero">
-      <div class="container">
-        <h1>Properties</h1>
+    <main class="properties-page">
+      <section class="properties-listing">
+        <div class="container">
+          <!-- Page Introduction -->
+          <div class="properties-intro">
+            <span class="section-badge"> Our Properties </span>
 
-        <p>Browse available houses, duplexes and lands across Nigeria.</p>
-      </div>
-    </section>
+            <h1>Find a Property That Fits You</h1>
 
-    <!-- PROPERTY LISTINGS -->
+            <p>
+              Browse houses, apartments, duplexes and lands available across
+              Nigeria.
+            </p>
+          </div>
 
-    <section class="featured-properties">
-      <div class="container">
-        <div class="property-grid" id="property-grid"></div>
-      </div>
-    </section>
+          <!-- =====================================
+               PROPERTY CAROUSEL
+          ====================================== -->
+
+          <div class="property-slider">
+            <!-- Property Cards -->
+            <div
+              class="property-grid"
+              id="property-grid"
+              tabindex="0"
+              aria-label="Property listings"
+            >
+              <!-- JavaScript loads properties here -->
+            </div>
+          </div>
+
+          <!-- =====================================
+               PROPERTY PAGINATION
+          ====================================== -->
+
+          <div
+            class="property-pagination"
+            id="property-pagination"
+            aria-label="Property pagination"
+          >
+            <!-- Previous -->
+            <button
+              type="button"
+              class="pagination-arrow"
+              id="property-prev"
+              aria-label="Previous property"
+            >
+              ←
+            </button>
+
+            <!-- Pagination Dots -->
+            <div
+              class="pagination-dots"
+              id="pagination-dots"
+              aria-label="Property positions"
+            ></div>
+
+            <!-- Next -->
+            <button
+              type="button"
+              class="pagination-arrow"
+              id="property-next"
+              aria-label="Next property"
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
 
     <footer class="footer">
       <div class="container">
         <div class="footer-grid">
+          <!-- Footer Brand -->
           <div class="footer-brand">
             <img src="images/logo.png" alt="Lexo Property Logo" />
 
@@ -71,35 +167,46 @@
             </p>
           </div>
 
+          <!-- Footer Links -->
           <div class="footer-links">
             <h4>Quick Links</h4>
 
-            <a href="./index.html">Home</a>
-            <a href="./properties.html">Properties</a>
-            <a href="./services.html">Services</a>
-            <a href="./about.html">About Us</a>
-            <a href="./contact.html">Contact</a>
+            <a href="index.html"> Home </a>
+
+            <a href="properties.html"> Properties </a>
+
+            <a href="services.html"> Services </a>
+
+            <a href="about.html"> About Us </a>
+
+            <a href="contact.html"> Contact </a>
           </div>
 
+          <!-- Footer Contact -->
           <div class="footer-contact">
             <h4>Contact Info</h4>
 
             <p>📍 Ibadan, Oyo State</p>
+
             <p>📞 +234 907 994 8293</p>
+
             <p>✉ lexoproperty@gmail.com</p>
           </div>
         </div>
 
+        <!-- Copyright -->
         <div class="footer-bottom">
           <p>© 2026 Lexo Property. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/navbar.js"></script>
+
+    <script src="js/properties-page.js"></script>
   </body>
-
-  <script src="/js/properties-page.js"></script>
 </html>
-
-
-
-

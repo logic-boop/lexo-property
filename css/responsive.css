@@ -1,5 +1,6 @@
 /* =========================================================
    LEXO PROPERTY — RESPONSIVE STYLES
+   Homepage + Shared Pages
    Works with index.html + style.css
 ========================================================= */
 
@@ -9,6 +10,10 @@
 ========================================================= */
 
 @media (max-width: 1200px) {
+  /* ==========================
+     GLOBAL
+  ========================== */
+
   .container {
     width: 92%;
   }
@@ -54,7 +59,7 @@
   }
 
   /* ==========================
-     PROPERTY CARDS
+     FEATURED PROPERTIES
   ========================== */
 
   .property-grid {
@@ -154,6 +159,10 @@
     margin: 22px auto 35px;
   }
 
+  /* ==========================
+     SEARCH
+  ========================== */
+
   .search-card {
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
@@ -166,6 +175,10 @@
   .search-btn {
     width: 100%;
   }
+
+  /* ==========================
+     STATS
+  ========================== */
 
   .stats {
     margin-top: 55px;
@@ -195,8 +208,18 @@
   }
 
   /* ==========================
-     PROPERTY GRID
+     FEATURED PROPERTY CAROUSEL
   ========================== */
+
+  .property-slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .property-grid {
+    gap: 25px;
+    overflow: visible;
+  }
 
   .property-card {
     flex: 0 0 calc((100% - 25px) / 2);
@@ -289,7 +312,7 @@
 }
 
 /* =========================================================
-   MOBILE NAVIGATION
+   MOBILE NAVIGATION + HOMEPAGE
    768px and below
 ========================================================= */
 
@@ -328,12 +351,16 @@
     font-size: 1.05rem;
   }
 
-  /* Hide desktop navigation */
+  /* ==========================
+     MOBILE NAVIGATION
+  ========================== */
 
   .nav-links {
     position: absolute;
+
     top: 75px;
     left: 0;
+
     width: 100%;
 
     display: flex;
@@ -359,9 +386,11 @@
       opacity 0.3s ease,
       visibility 0.3s ease,
       transform 0.3s ease;
+
+    z-index: 999;
   }
 
-  /* Open navigation */
+  /* Open menu */
 
   .nav-links.active {
     opacity: 1;
@@ -371,7 +400,9 @@
 
   .nav-links a {
     width: 100%;
+
     padding: 15px 5%;
+
     font-size: 1rem;
   }
 
@@ -394,7 +425,7 @@
   }
 
   /* ==========================
-     HAMBURGER
+     MOBILE MENU BUTTON
   ========================== */
 
   .menu-toggle {
@@ -402,6 +433,7 @@
     height: 44px;
 
     display: flex;
+
     flex-direction: column;
 
     justify-content: center;
@@ -410,11 +442,14 @@
     gap: 5px;
 
     background: transparent;
+
     border: none;
 
     cursor: pointer;
 
     padding: 8px;
+
+    flex-shrink: 0;
   }
 
   .menu-toggle span {
@@ -433,7 +468,9 @@
       width 0.3s ease;
   }
 
-  /* Hamburger → X */
+  /* ==========================
+     HAMBURGER → X
+  ========================== */
 
   .menu-toggle.active span:nth-child(1) {
     transform: translateY(7.5px) rotate(45deg);
@@ -466,13 +503,17 @@
 
   .hero h1 {
     margin-top: 22px;
+
     font-size: 2.15rem;
+
     line-height: 1.2;
   }
 
   .hero p {
     font-size: 1rem;
+
     line-height: 1.7;
+
     margin: 18px auto 30px;
   }
 
@@ -482,9 +523,14 @@
 
   .search-card {
     grid-template-columns: 1fr;
+
     padding: 20px;
+
     border-radius: 18px;
+
     gap: 15px;
+
+    width: 100%;
   }
 
   .search-card .search-field:first-child {
@@ -493,12 +539,15 @@
 
   .search-field label {
     margin-bottom: 7px;
+
     font-size: 0.82rem;
   }
 
   .search-field input,
   .search-field select,
   .search-btn {
+    width: 100%;
+
     height: 52px;
   }
 
@@ -507,17 +556,20 @@
   }
 
   /* ==========================
-     STATS
+     HERO STATS
   ========================== */
 
   .stats {
     grid-template-columns: repeat(2, 1fr);
+
     gap: 12px;
+
     margin-top: 35px;
   }
 
   .stat {
     padding: 20px 15px;
+
     border-radius: 15px;
   }
 
@@ -548,41 +600,61 @@
 
   .section-badge {
     padding: 8px 16px;
+
     font-size: 0.8rem;
   }
 
   .section-header h2 {
     font-size: 2rem;
+
     line-height: 1.25;
   }
 
   .section-header p {
     font-size: 0.95rem;
+
     line-height: 1.7;
   }
 
-  /* ==========================
-     PROPERTY CAROUSEL
-  ========================== */
+  /* =====================================================
+     FEATURED PROPERTY CAROUSEL
+     
+     IMPORTANT:
+     One card at a time on mobile.
+     No gap between cards so the JS percentage
+     translation remains perfectly aligned.
+  ===================================================== */
 
   .property-slider {
     width: 100%;
+
     overflow: hidden;
+
+    position: relative;
   }
 
   .property-grid {
-    gap: 15px;
+    gap: 0;
 
     overflow: visible;
 
     touch-action: pan-y;
 
     cursor: grab;
+
+    will-change: transform;
+  }
+
+  .property-grid:active {
+    cursor: grabbing;
   }
 
   .property-card {
     flex: 0 0 100%;
+
     width: 100%;
+
+    min-width: 100%;
   }
 
   .property-card:hover {
@@ -590,6 +662,8 @@
   }
 
   .property-card img {
+    width: 100%;
+
     height: 230px;
   }
 
@@ -611,25 +685,32 @@
 
   .property-features {
     gap: 8px;
+
+    flex-wrap: wrap;
   }
 
   .property-features span {
     font-size: 0.8rem;
+
     padding: 7px 10px;
   }
 
   /* ==========================
-     PAGINATION
+     PROPERTY PAGINATION
   ========================== */
 
   .property-pagination {
     margin-top: 30px;
+
     gap: 15px;
+
+    justify-content: center;
   }
 
   .pagination-arrow {
     width: 42px;
     height: 42px;
+
     font-size: 1rem;
   }
 
@@ -648,7 +729,9 @@
 
   .why-grid {
     grid-template-columns: 1fr;
+
     gap: 18px;
+
     margin-top: 40px;
   }
 
@@ -659,6 +742,7 @@
   .why-icon {
     width: 65px;
     height: 65px;
+
     font-size: 1.6rem;
   }
 
@@ -668,6 +752,7 @@
 
   .testimonial-grid {
     grid-template-columns: 1fr;
+
     gap: 18px;
   }
 
@@ -693,23 +778,28 @@
 
   .cta-content h2 {
     font-size: 2rem;
+
     line-height: 1.25;
   }
 
   .cta-content p {
     font-size: 0.95rem;
+
     line-height: 1.7;
+
     margin-bottom: 30px;
   }
 
   .cta-buttons {
     flex-direction: column;
+
     gap: 12px;
   }
 
   .cta-buttons .browse-btn,
   .cta-buttons .cta-outline {
     width: 100%;
+
     text-align: center;
   }
 
@@ -723,6 +813,7 @@
 
   .footer-grid {
     grid-template-columns: 1fr;
+
     gap: 35px;
   }
 
@@ -737,12 +828,15 @@
   .footer-links,
   .footer-contact {
     display: flex;
+
     flex-direction: column;
   }
 
   .footer-bottom {
     margin-top: 35px;
+
     padding-top: 20px;
+
     font-size: 0.85rem;
   }
 
@@ -760,6 +854,7 @@
 
   .page-hero p {
     font-size: 1rem;
+
     line-height: 1.7;
   }
 
@@ -769,6 +864,7 @@
 
   .services-grid {
     grid-template-columns: 1fr;
+
     gap: 18px;
   }
 
@@ -798,11 +894,15 @@
 
   .property-details-page .container {
     grid-template-columns: 1fr;
+
     gap: 35px;
   }
 
   .property-image img {
+    width: 100%;
+
     height: 320px;
+
     border-radius: 16px;
   }
 
@@ -816,7 +916,9 @@
 
   .property-details-page .property-features {
     grid-template-columns: repeat(3, 1fr);
+
     gap: 10px;
+
     margin: 25px 0;
   }
 
@@ -834,11 +936,13 @@
 
   .property-actions {
     flex-direction: column;
+
     margin-top: 30px;
   }
 
   .property-actions a {
     width: 100%;
+
     flex: none;
   }
 
@@ -852,6 +956,7 @@
 
   .related-properties h2 {
     font-size: 1.8rem;
+
     margin-bottom: 35px;
   }
 
@@ -865,6 +970,7 @@
 
   .dashboard-header {
     flex-direction: column;
+
     align-items: flex-start;
   }
 
@@ -874,11 +980,13 @@
 
   .add-property-btn {
     width: 100%;
+
     text-align: center;
   }
 
   .dashboard-cards {
     grid-template-columns: 1fr;
+
     gap: 15px;
   }
 
@@ -888,6 +996,7 @@
 
   .recent-properties {
     padding: 20px;
+
     overflow-x: auto;
   }
 
@@ -918,12 +1027,15 @@
 
   .table-header {
     flex-direction: column;
+
     align-items: stretch;
   }
 
   .table-controls {
     width: 100%;
+
     flex-direction: column;
+
     align-items: stretch;
   }
 
@@ -990,7 +1102,10 @@
 
   .badge {
     font-size: 0.7rem;
+
     padding: 7px 12px;
+
+    max-width: 100%;
   }
 
   .hero h1 {
@@ -1007,6 +1122,7 @@
 
   .search-card {
     padding: 16px;
+
     border-radius: 16px;
   }
 
@@ -1014,6 +1130,7 @@
   .search-field select,
   .search-btn {
     height: 50px;
+
     font-size: 0.9rem;
   }
 
@@ -1084,7 +1201,37 @@
 
   .property-btn {
     padding: 13px;
+
     font-size: 0.9rem;
+  }
+
+  /* ==========================
+     PROPERTY FEATURES
+  ========================== */
+
+  .property-features {
+    gap: 6px;
+  }
+
+  .property-features span {
+    font-size: 0.72rem;
+
+    padding: 6px 8px;
+  }
+
+  /* ==========================
+     PAGINATION
+  ========================== */
+
+  .property-pagination {
+    margin-top: 25px;
+
+    gap: 10px;
+  }
+
+  .pagination-arrow {
+    width: 38px;
+    height: 38px;
   }
 
   /* ==========================
@@ -1184,5 +1331,37 @@
 
   .section-header h2 {
     font-size: 1.5rem;
+  }
+
+  .property-content {
+    padding: 16px;
+  }
+
+  .property-card img {
+    height: 200px;
+  }
+
+  .property-price {
+    font-size: 1.1rem;
+  }
+
+  .property-content h3 {
+    font-size: 1rem;
+  }
+}
+
+/* --Properties Page */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 70px 20px;
+  }
+
+  .page-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .page-hero p {
+    font-size: 1rem;
+    line-height: 1.7;
   }
 }
