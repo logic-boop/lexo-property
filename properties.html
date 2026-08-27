@@ -6,7 +6,10 @@
 
     <title>Properties | Lexo Property</title>
 
-    <!-- Google Fonts -->
+    <!-- =========================================
+         GOOGLE FONTS
+    ========================================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,8 +19,12 @@
       rel="stylesheet"
     />
 
-    <!-- Main Styles -->
+    <!-- =========================================
+         MAIN STYLES
+    ========================================== -->
+
     <link rel="stylesheet" href="css/style.css" />
+
     <link rel="stylesheet" href="css/responsive.css" />
   </head>
 
@@ -29,6 +36,7 @@
     <header class="navbar">
       <div class="container nav-container">
         <!-- Logo -->
+
         <a href="index.html" class="logo">
           <img src="images/logo.png" alt="Lexo Property Logo" />
 
@@ -40,10 +48,13 @@
         </a>
 
         <!-- Navigation -->
+
         <nav class="nav-links" id="nav-links" aria-label="Main navigation">
           <a href="index.html"> Home </a>
 
-          <a href="properties.html" class="active"> Properties </a>
+          <a href="properties.html" class="active" aria-current="page">
+            Properties
+          </a>
 
           <a href="services.html"> Services </a>
 
@@ -53,11 +64,13 @@
         </nav>
 
         <!-- Desktop Browse Button -->
+
         <a href="properties.html" class="browse-btn desktop-browse-btn">
           Browse Properties
         </a>
 
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu Button -->
+
         <button
           type="button"
           class="menu-toggle"
@@ -78,13 +91,16 @@
     ========================================== -->
 
     <main class="properties-page">
-      <section class="properties-listing">
+      <section class="properties-listing" aria-labelledby="properties-title">
         <div class="container">
-          <!-- Page Introduction -->
+          <!-- =====================================
+               PAGE INTRODUCTION
+          ====================================== -->
+
           <div class="properties-intro">
             <span class="section-badge"> Our Properties </span>
 
-            <h1>Find a Property That Fits You</h1>
+            <h1 id="properties-title">Find a Property That Fits You</h1>
 
             <p>
               Browse houses, apartments, duplexes and lands available across
@@ -96,15 +112,17 @@
                PROPERTY CAROUSEL
           ====================================== -->
 
-          <div class="property-slider">
-            <!-- Property Cards -->
+          <div class="property-slider" aria-label="Available properties">
             <div
               class="property-grid"
               id="property-grid"
               tabindex="0"
               aria-label="Property listings"
             >
-              <!-- JavaScript loads properties here -->
+              <!--
+                JavaScript dynamically loads
+                property cards here.
+              -->
             </div>
           </div>
 
@@ -117,29 +135,32 @@
             id="property-pagination"
             aria-label="Property pagination"
           >
-            <!-- Previous -->
+            <!-- Previous Button -->
+
             <button
               type="button"
               class="pagination-arrow"
               id="property-prev"
-              aria-label="Previous property"
+              aria-label="Show previous properties"
             >
               ←
             </button>
 
             <!-- Pagination Dots -->
+
             <div
               class="pagination-dots"
               id="pagination-dots"
               aria-label="Property positions"
             ></div>
 
-            <!-- Next -->
+            <!-- Next Button -->
+
             <button
               type="button"
               class="pagination-arrow"
               id="property-next"
-              aria-label="Next property"
+              aria-label="Show next properties"
             >
               →
             </button>
@@ -155,7 +176,10 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-grid">
-          <!-- Footer Brand -->
+          <!-- =====================================
+               FOOTER BRAND
+          ====================================== -->
+
           <div class="footer-brand">
             <img src="images/logo.png" alt="Lexo Property Logo" />
 
@@ -167,7 +191,10 @@
             </p>
           </div>
 
-          <!-- Footer Links -->
+          <!-- =====================================
+               FOOTER LINKS
+          ====================================== -->
+
           <div class="footer-links">
             <h4>Quick Links</h4>
 
@@ -182,7 +209,10 @@
             <a href="contact.html"> Contact </a>
           </div>
 
-          <!-- Footer Contact -->
+          <!-- =====================================
+               FOOTER CONTACT
+          ====================================== -->
+
           <div class="footer-contact">
             <h4>Contact Info</h4>
 
@@ -194,7 +224,10 @@
           </div>
         </div>
 
-        <!-- Copyright -->
+        <!-- =====================================
+             COPYRIGHT
+        ====================================== -->
+
         <div class="footer-bottom">
           <p>© 2026 Lexo Property. All Rights Reserved.</p>
         </div>
