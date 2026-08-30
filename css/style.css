@@ -3407,193 +3407,494 @@ th {
 }
 
 /* =========================================================
-   SMALL PHONES
+   LEXO PROPERTY — PROPERTIES PAGE
    ========================================================= */
 
-@media (max-width: 480px) {
-  .container {
-    width: 94%;
-  }
+/* =========================================================
+   PROPERTIES PAGE
+   ========================================================= */
 
-  .logo img {
-    width: 48px;
-    height: 48px;
-  }
-
-  .logo-text h2 {
-    font-size: 0.9rem;
-  }
-
-  .logo-text p {
-    font-size: 0.65rem;
-  }
-
-  /* HERO */
-
-  .hero-content {
-    padding: 55px 0 50px;
-  }
-
-  .badge {
-    font-size: 0.72rem;
-    padding: 7px 12px;
-  }
-
-  .hero h1 {
-    font-size: 1.85rem;
-  }
-
-  .hero p {
-    font-size: 0.9rem;
-    margin-bottom: 28px;
-  }
-
-  /* STATS */
-
-  .stats {
-    gap: 12px;
-  }
-
-  .stat h3 {
-    font-size: 1.25rem;
-  }
-
-  .stat p {
-    font-size: 0.72rem;
-  }
-
-  /* FEATURED PROPERTY */
-
-  .property-card {
-    border-radius: 18px;
-  }
-
-  .property-card img {
-    height: 240px;
-  }
-
-  .property-content {
-    padding: 20px;
-  }
-
-  .property-price {
-    font-size: 1.3rem;
-  }
-
-  .property-content h3 {
-    font-size: 1.15rem;
-  }
-
-  .property-content p {
-    font-size: 0.85rem;
-  }
-
-  .property-features {
-    gap: 8px;
-    padding: 14px 0;
-    margin-bottom: 20px;
-  }
-
-  .property-features span {
-    font-size: 0.78rem;
-  }
-
-  .property-pagination {
-    gap: 12px;
-    margin-top: 25px;
-  }
-
-  .pagination-arrow {
-    width: 40px;
-    height: 40px;
-  }
-
-  /* SECTION HEADINGS */
-
-  .section-header h2 {
-    font-size: 1.65rem;
-  }
-
-  .section-header p {
-    font-size: 0.85rem;
-  }
-
-  /* PAGE HERO */
-
-  .page-hero {
-    padding: 55px 0;
-  }
-
-  .page-hero h1 {
-    font-size: 2rem;
-  }
-
-  .page-hero p {
-    font-size: 0.85rem;
-  }
-
-  /* CTA */
-
-  .cta-section {
-    padding: 60px 0;
-  }
-
-  .cta-content h2 {
-    font-size: 1.7rem;
-  }
-
-  .cta-content p {
-    font-size: 0.85rem;
-  }
-
-  /* PROPERTY DETAILS */
-
-  .property-image img {
-    height: 280px;
-  }
-
-  .property-info h1 {
-    font-size: 1.7rem;
-  }
-
-  .property-info h2 {
-    font-size: 1.5rem;
-  }
-
-  /* LOGIN */
-
-  .login-card {
-    padding: 30px 20px;
-    border-radius: 18px;
-  }
+.properties-page {
+  background: #ffffff;
+  min-height: 60vh;
 }
 
 /* =========================================================
-   VERY SMALL PHONES
+   PROPERTIES LISTING SECTION
    ========================================================= */
 
-@media (max-width: 360px) {
-  .logo-text {
-    display: none;
-  }
+.properties-listing {
+  padding: 90px 0 100px;
+}
 
-  .hero h1 {
-    font-size: 1.45rem;
-  }
+/* =========================================================
+   PAGE INTRODUCTION
+   ========================================================= */
 
-  .section-header h2 {
-    font-size: 1.45rem;
-  }
+.properties-intro {
+  max-width: 760px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
 
-  .property-card img {
-    height: 210px;
-  }
+.properties-intro .section-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  .property-content {
-    padding: 18px;
-  }
+  margin-bottom: 18px;
 
-  .property-pagination {
-    gap: 10px;
-  }
+  padding: 8px 17px;
+
+  border-radius: 50px;
+
+  background: rgba(34, 229, 47, 0.1);
+
+  color: var(--primary-green);
+
+  font-size: 0.82rem;
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
+}
+
+.properties-intro h1 {
+  margin: 0 0 18px;
+
+  color: #111827;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: 2.8rem;
+
+  line-height: 1.15;
+
+  font-weight: 800;
+}
+
+.properties-intro p {
+  max-width: 650px;
+
+  margin: 0 auto;
+
+  color: #6b7280;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 1rem;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   PROPERTY SLIDER
+   ========================================================= */
+
+.property-slider {
+  width: 100%;
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+/* =========================================================
+   PROPERTY GRID
+   ========================================================= */
+
+.properties-listing .property-grid {
+  display: flex;
+
+  gap: 25px;
+
+  width: 100%;
+
+  overflow: visible;
+
+  transition: transform 0.45s ease;
+
+  will-change: transform;
+}
+
+.properties-listing .property-grid.carousel-animate {
+  transition: transform 0.45s ease;
+}
+
+/* =========================================================
+   PROPERTY CARD
+   ========================================================= */
+
+.properties-listing .property-card {
+  flex: 0 0 calc((100% - 50px) / 3);
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* =========================================================
+   PROPERTY CARD HOVER
+   ========================================================= */
+
+.properties-listing .property-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(34, 229, 47, 0.3);
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09);
+}
+
+/* =========================================================
+   PROPERTY IMAGE
+   ========================================================= */
+
+.properties-listing .property-card > img {
+  display: block;
+
+  width: 100%;
+
+  height: 260px;
+
+  object-fit: cover;
+
+  background: #f3f4f6;
+}
+
+/* =========================================================
+   PROPERTY CONTENT
+   ========================================================= */
+
+.properties-listing .property-content {
+  padding: 24px;
+}
+
+/* =========================================================
+   PROPERTY PRICE
+   ========================================================= */
+
+.properties-listing .property-price {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--primary-green);
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: 1.35rem;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+}
+
+/* =========================================================
+   PROPERTY TITLE
+   ========================================================= */
+
+.properties-listing .property-content h3 {
+  margin: 0 0 9px;
+
+  color: #111827;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: 1.25rem;
+
+  line-height: 1.35;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   PROPERTY LOCATION
+   ========================================================= */
+
+.properties-listing .property-content > p {
+  margin: 0 0 18px;
+
+  color: #6b7280;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 0.9rem;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   PROPERTY FEATURES
+   ========================================================= */
+
+.properties-listing .property-features {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 22px;
+}
+
+.properties-listing .property-features span {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 7px 10px;
+
+  background: #f7f8f7;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 8px;
+
+  color: #4b5563;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 0.76rem;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   VIEW DETAILS BUTTON
+   ========================================================= */
+
+.properties-listing .property-btn {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 100%;
+
+  padding: 13px 18px;
+
+  background: var(--primary-green);
+
+  border: 1px solid var(--primary-green);
+
+  border-radius: 9px;
+
+  color: #ffffff;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 0.9rem;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.properties-listing .property-btn:hover {
+  background: #0b3d10;
+
+  border-color: #0b3d10;
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   PROPERTY PAGINATION
+   ========================================================= */
+
+.property-pagination {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 18px;
+
+  margin-top: 38px;
+}
+
+/* =========================================================
+   PAGINATION ARROWS
+   ========================================================= */
+
+.pagination-arrow {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 44px;
+
+  height: 44px;
+
+  padding: 0;
+
+  background: #ffffff;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 50%;
+
+  color: #111827;
+
+  font-size: 1.05rem;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.pagination-arrow:hover:not(:disabled) {
+  background: var(--primary-green);
+
+  border-color: var(--primary-green);
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+.pagination-arrow:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   PAGINATION DOTS
+   ========================================================= */
+
+.pagination-dots {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+}
+
+.pagination-dot {
+  width: 8px;
+
+  height: 8px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #d1d5db;
+
+  cursor: pointer;
+
+  transition:
+    width 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.pagination-dot:hover {
+  transform: scale(1.15);
+}
+
+.pagination-dot.active {
+  width: 22px;
+
+  border-radius: 50px;
+
+  background: var(--primary-green);
+}
+
+/* =========================================================
+   EMPTY / LOADING / ERROR STATE
+   ========================================================= */
+
+.empty-properties {
+  width: 100%;
+
+  padding: 70px 25px;
+
+  text-align: center;
+
+  background: #f9fafb;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+}
+
+.empty-properties h3 {
+  margin: 0 0 10px;
+
+  color: #111827;
+
+  font-family: "Outfit", sans-serif;
+
+  font-size: 1.5rem;
+
+  font-weight: 700;
+}
+
+.empty-properties p {
+  max-width: 500px;
+
+  margin: 0 auto 20px;
+
+  color: #6b7280;
+
+  font-size: 0.95rem;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.properties-listing .property-grid:focus {
+  outline: none;
+}
+
+.properties-listing .property-grid:focus-visible {
+  outline: 2px solid var(--primary-green);
+
+  outline-offset: 6px;
+
+  border-radius: 10px;
 }
