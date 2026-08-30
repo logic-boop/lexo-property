@@ -36,68 +36,119 @@ let isAnimating = false;
 
 let resizeTimer;
 
+let animationTimer;
+
+// ===================================
+// CAROUSEL SETTINGS
+// ===================================
+
+const ANIMATION_DURATION = 450;
+
+const SWIPE_THRESHOLD = 50;
+
 // ===================================
 // CREATE PROPERTY CARD
 // ===================================
 
 function createPropertyCard(property) {
-  const imageUrl = property.image
-    ? property.image.startsWith("http")
-      ? property.image
-      : `${API_URL}${property.image}`
-    : "images/properties/house.jpg";
+  // ---------------------------------
+  // PROPERTY IMAGE
+  // ---------------------------------
 
-  const price = Number(property.price || 0).toLocaleString();
+  let imageUrl = "images/properties/house.jpg";
+
+  if (property.image) {
+    if (
+      property.image.startsWith("http://") ||
+      property.image.startsWith("https://")
+    ) {
+      imageUrl = property.image;
+    } else {
+      const imagePath = property.image.startsWith("/")
+        ? property.image
+        : `/${property.image}`;
+
+      imageUrl = `${API_URL}${imagePath}`;
+    }
+  }
+
+  // ---------------------------------
+  // PROPERTY PRICE
+  // ---------------------------------
+
+  const numericPrice = Number(property.price || 0);
+
+  const price = numericPrice.toLocaleString("en-NG");
+
+  // ---------------------------------
+  // PROPERTY DATA
+  // ---------------------------------
+
+  const title = property.title || "Untitled Property";
+
+  const location = property.location || "Location unavailable";
+
+  const bedrooms = property.bedrooms || 0;
+
+  const bathrooms = property.bathrooms || 0;
+
+  const type = property.type || "Property";
+
+  const propertyId = property._id || property.id || "";
+
+  // =================================
+  // RETURN PROPERTY CARD
+  // =================================
 
   return `
     <article class="property-card">
 
+      <!-- PROPERTY IMAGE -->
       <img
         src="${imageUrl}"
-        alt="${property.title || "Lexo Property"}"
+        alt="${title}"
         loading="lazy"
-        onerror="this.src='images/properties/house.jpg'"
+        onerror="this.onerror=null; this.src='images/properties/house.jpg';"
       />
 
-
+      <!-- PROPERTY CONTENT -->
       <div class="property-content">
 
+        <!-- PRICE -->
         <span class="property-price">
           ₦${price}
         </span>
 
-
+        <!-- TITLE -->
         <h3>
-          ${property.title || "Untitled Property"}
+          ${title}
         </h3>
 
-
+        <!-- LOCATION -->
         <p>
-          ${property.location || "Location unavailable"}
+          ${location}
         </p>
 
-
+        <!-- FEATURES -->
         <div class="property-features">
 
           <span>
-            🛏 ${property.bedrooms || 0} Beds
+            🛏 ${bedrooms} Beds
           </span>
 
-
           <span>
-            🚿 ${property.bathrooms || 0} Baths
+            🚿 ${bathrooms} Baths
           </span>
 
-
           <span>
-            ${property.type || "Property"}
+            ${type}
           </span>
 
         </div>
 
-
+        <!-- VIEW DETAILS -->
         <a
-          href="property-details.html?id=${property._id}"
+          href="property-details.html?id=${propertyId}"
           class="property-btn"
         >
           View Details
@@ -118,7 +169,6 @@ function getVisibleCards() {
 
   // =================================
   // MOBILE
-  // 1 CARD
   // =================================
 
   if (width <= 768) {
@@ -127,7 +177,6 @@ function getVisibleCards() {
 
   // =================================
   // TABLET
-  // 2 CARDS
   // =================================
 
   if (width <= 991) {
@@ -136,7 +185,6 @@ function getVisibleCards() {
 
   // =================================
   // DESKTOP
-  // 3 CARDS
   // =================================
 
   return 3;
@@ -149,7 +197,23 @@ function getVisibleCards() {
 function getMaxIndex() {
   const visibleCards = getVisibleCards();
 
-  return Math.max(0, allProperties.length - visibleCards);
+  if (allProperties.length <= visibleCards) {
+    return 0;
+  }
+
+  return allProperties.length - visibleCards;
+}
+
+// ===================================
+// GET PROPERTY CARD ELEMENTS
+// ===================================
+
+function getPropertyCards() {
+  if (!propertyGrid) {
+    return [];
+  }
+
+  return Array.from(propertyGrid.querySelectorAll(".property-card"));
 }
 
 // ===================================
@@ -161,9 +225,25 @@ function renderProperties() {
     return;
   }
 
+  // ---------------------------------
+  // Render cards
+  // ---------------------------------
+
   propertyGrid.innerHTML = allProperties
     .map((property) => createPropertyCard(property))
     .join("");
+
+  // ---------------------------------
+  // Reset animation
+  // ---------------------------------
+
+  propertyGrid.classList.remove("carousel-animate");
+
+  // ---------------------------------
+  // Reset position
+  // ---------------------------------
+
+  currentIndex = Math.min(currentIndex, getMaxIndex());
 
   updateCarouselPosition(false);
 }
@@ -177,34 +257,75 @@ function updateCarouselPosition(animate = true) {
     return;
   }
 
-  // Add/remove animation class
+  const cards = getPropertyCards();
+
+  // ---------------------------------
+  // No cards
+  // ---------------------------------
+
+  if (cards.length === 0) {
+    propertyGrid.style.transform = "translateX(0)";
+
+    return;
+  }
+
+  // ---------------------------------
+  // Keep index valid
+  // ---------------------------------
+
+  const maxIndex = getMaxIndex();
+
+  if (currentIndex < 0) {
+    currentIndex = 0;
+  }
+
+  if (currentIndex > maxIndex) {
+    currentIndex = maxIndex;
+  }
+
+  // ---------------------------------
+  // Animation
+  // ---------------------------------
+
   if (animate) {
     propertyGrid.classList.add("carousel-animate");
   } else {
     propertyGrid.classList.remove("carousel-animate");
   }
 
-  const visibleCards = getVisibleCards();
+  // =================================
+  // IMPORTANT CAROUSEL FIX
+  // =================================
+  //
+  // Instead of using:
+  //
+  // translateX(-33.333%)
+  //
+  // we use the actual position of
+  // the target card.
+  //
+  // This correctly accounts for:
+  //
+  // - card width
+  // - flex-basis
+  // - gap
+  // - responsive widths
+  // - tablet layout
+  // - mobile layout
+  //
+  // =================================
 
-  /*
-    The carousel works according to
-    the number of cards visible.
+  const targetCard = cards[currentIndex];
 
-    Desktop:
-    3 cards = 33.333% each
+  if (!targetCard) {
+    propertyGrid.style.transform = "translateX(0)";
 
-    Tablet:
-    2 cards = 50% each
+    return;
+  }
 
-    Mobile:
-    1 card = 100%
-  */
+  const translateAmount = targetCard.offsetLeft;
 
-  const cardWidth = 100 / visibleCards;
-
-  const translateAmount = currentIndex * cardWidth;
-
-  propertyGrid.style.transform = `translateX(-${translateAmount}%)`;
+  propertyGrid.style.transform = `translateX(-${translateAmount}px)`;
 }
 
 // ===================================
@@ -212,17 +333,13 @@ function updateCarouselPosition(animate = true) {
 // ===================================
 
 function updateButtons() {
-  if (!prevButton || !nextButton) {
-    return;
+  if (prevButton) {
+    prevButton.disabled = currentIndex <= 0;
   }
 
-  const maxIndex = getMaxIndex();
-
-  // Previous button
-  prevButton.disabled = currentIndex <= 0;
-
-  // Next button
-  nextButton.disabled = currentIndex >= maxIndex;
+  if (nextButton) {
+    nextButton.disabled = currentIndex >= getMaxIndex();
+  }
 }
 
 // ===================================
@@ -234,23 +351,25 @@ function updatePaginationDots() {
     return;
   }
 
+  // ---------------------------------
+  // Clear existing dots
+  // ---------------------------------
+
   paginationDots.innerHTML = "";
 
   const maxIndex = getMaxIndex();
 
-  /*
-    If all properties fit on the screen,
-    pagination is not required.
-  */
+  // ---------------------------------
+  // No pagination needed
+  // ---------------------------------
 
   if (maxIndex <= 0) {
     return;
   }
 
-  /*
-    Create one dot for every possible
-    carousel position.
-  */
+  // =================================
+  // CREATE DOTS
+  // =================================
 
   for (let i = 0; i <= maxIndex; i++) {
     const dot = document.createElement("button");
@@ -259,16 +378,26 @@ function updatePaginationDots() {
 
     dot.className = "pagination-dot";
 
+    // ---------------------------------
     // Active dot
+    // ---------------------------------
+
     if (i === currentIndex) {
       dot.classList.add("active");
     }
+
+    // ---------------------------------
+    // Accessibility
+    // ---------------------------------
 
     dot.setAttribute("aria-label", `Show property position ${i + 1}`);
 
     dot.setAttribute("aria-current", i === currentIndex ? "true" : "false");
 
+    // ---------------------------------
     // Dot click
+    // ---------------------------------
+
     dot.addEventListener("click", () => {
       if (isAnimating) {
         return;
@@ -290,12 +419,15 @@ function updatePaginationDots() {
 // ===================================
 
 function updateCarouselUI() {
+  if (!propertyGrid) {
+    return;
+  }
+
   const maxIndex = getMaxIndex();
 
-  /*
-    Make sure the current position
-    is still valid after resizing.
-  */
+  // ---------------------------------
+  // Keep index valid
+  // ---------------------------------
 
   if (currentIndex > maxIndex) {
     currentIndex = maxIndex;
@@ -305,20 +437,53 @@ function updateCarouselUI() {
     currentIndex = 0;
   }
 
+  // ---------------------------------
+  // Update position
+  // ---------------------------------
+
   updateCarouselPosition(false);
+
+  // ---------------------------------
+  // Update buttons
+  // ---------------------------------
 
   updateButtons();
 
+  // ---------------------------------
+  // Update dots
+  // ---------------------------------
+
   updatePaginationDots();
 
-  /*
-    Hide pagination completely when
-    all properties fit on screen.
-  */
+  // ---------------------------------
+  // Show / hide pagination
+  // ---------------------------------
 
   if (pagination) {
     pagination.style.display = maxIndex <= 0 ? "none" : "flex";
   }
+}
+
+// ===================================
+// CLEAR ANIMATION TIMER
+// ===================================
+
+function clearAnimationTimer() {
+  if (animationTimer) {
+    clearTimeout(animationTimer);
+
+    animationTimer = null;
+  }
+}
+
+// ===================================
+// FINISH ANIMATION
+// ===================================
+
+function finishAnimation() {
+  clearAnimationTimer();
+
+  isAnimating = false;
 }
 
 // ===================================
@@ -332,35 +497,65 @@ function moveToIndex(index) {
 
   const maxIndex = getMaxIndex();
 
-  /*
-    Prevent invalid movement.
-  */
+  // ---------------------------------
+  // Prevent invalid movement
+  // ---------------------------------
 
-  if (index < 0 || index > maxIndex || index === currentIndex || isAnimating) {
+  if (index < 0 || index > maxIndex) {
     return;
   }
+
+  // ---------------------------------
+  // Already there
+  // ---------------------------------
+
+  if (index === currentIndex) {
+    return;
+  }
+
+  // ---------------------------------
+  // Prevent movement during animation
+  // ---------------------------------
+
+  if (isAnimating) {
+    return;
+  }
+
+  // ---------------------------------
+  // Start animation
+  // ---------------------------------
 
   isAnimating = true;
 
   currentIndex = index;
 
+  // ---------------------------------
+  // Move carousel
+  // ---------------------------------
+
   updateCarouselPosition(true);
+
+  // ---------------------------------
+  // Update UI immediately
+  // ---------------------------------
 
   updateButtons();
 
   updatePaginationDots();
 
-  /*
-    Match this duration with:
+  // ---------------------------------
+  // Clear previous timer
+  // ---------------------------------
 
-    .carousel-animate {
-      transition: transform 0.45s ease;
-    }
-  */
+  clearAnimationTimer();
 
-  setTimeout(() => {
-    isAnimating = false;
-  }, 450);
+  // ---------------------------------
+  // Animation fallback timer
+  // ---------------------------------
+
+  animationTimer = setTimeout(() => {
+    finishAnimation();
+  }, ANIMATION_DURATION);
 }
 
 // ===================================
@@ -368,9 +563,13 @@ function moveToIndex(index) {
 // ===================================
 
 function moveNext() {
+  if (isAnimating) {
+    return;
+  }
+
   const maxIndex = getMaxIndex();
 
-  if (currentIndex >= maxIndex || isAnimating) {
+  if (currentIndex >= maxIndex) {
     return;
   }
 
@@ -382,7 +581,11 @@ function moveNext() {
 // ===================================
 
 function movePrevious() {
-  if (currentIndex <= 0 || isAnimating) {
+  if (isAnimating) {
+    return;
+  }
+
+  if (currentIndex <= 0) {
     return;
   }
 
@@ -417,11 +620,13 @@ let touchEndX = 0;
 
 let touchEndY = 0;
 
-if (propertyGrid) {
-  // =================================
-  // TOUCH START
-  // =================================
+let isTouching = false;
 
+// ===================================
+// TOUCH START
+// ===================================
+
+if (propertyGrid) {
   propertyGrid.addEventListener(
     "touchstart",
     (event) => {
@@ -431,9 +636,45 @@ if (propertyGrid) {
 
       const touch = event.changedTouches[0];
 
+      if (!touch) {
+        return;
+      }
+
+      isTouching = true;
+
       touchStartX = touch.screenX;
 
       touchStartY = touch.screenY;
+
+      touchEndX = touch.screenX;
+
+      touchEndY = touch.screenY;
+    },
+    {
+      passive: true,
+    },
+  );
+
+  // =================================
+  // TOUCH MOVE
+  // =================================
+
+  propertyGrid.addEventListener(
+    "touchmove",
+    (event) => {
+      if (!isTouching || isAnimating) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+
+      if (!touch) {
+        return;
+      }
+
+      touchEndX = touch.screenX;
+
+      touchEndY = touch.screenY;
     },
     {
       passive: true,
@@ -447,17 +688,35 @@ if (propertyGrid) {
   propertyGrid.addEventListener(
     "touchend",
     (event) => {
-      if (isAnimating) {
+      if (!isTouching || isAnimating) {
         return;
       }
 
       const touch = event.changedTouches[0];
 
-      touchEndX = touch.screenX;
+      if (touch) {
+        touchEndX = touch.screenX;
 
-      touchEndY = touch.screenY;
+        touchEndY = touch.screenY;
+      }
+
+      isTouching = false;
 
       handleSwipe();
+    },
+    {
+      passive: true,
+    },
+  );
+
+  // =================================
+  // TOUCH CANCEL
+  // =================================
+
+  propertyGrid.addEventListener(
+    "touchcancel",
+    () => {
+      isTouching = false;
     },
     {
       passive: true,
@@ -474,26 +733,26 @@ function handleSwipe() {
 
   const verticalDistance = Math.abs(touchStartY - touchEndY);
 
-  /*
-    Ignore very small movements.
-  */
+  // ---------------------------------
+  // Ignore tiny movement
+  // ---------------------------------
 
-  if (Math.abs(horizontalDistance) < 50) {
+  if (Math.abs(horizontalDistance) < SWIPE_THRESHOLD) {
     return;
   }
 
-  /*
-    Ignore vertical scrolling.
-  */
+  // ---------------------------------
+  // Ignore vertical scrolling
+  // ---------------------------------
 
   if (verticalDistance > Math.abs(horizontalDistance)) {
     return;
   }
 
-  /*
-    Swipe LEFT
-    → NEXT
-  */
+  // ---------------------------------
+  // Swipe LEFT
+  // → NEXT
+  // ---------------------------------
 
   if (horizontalDistance > 0) {
     moveNext();
@@ -501,10 +760,10 @@ function handleSwipe() {
     return;
   }
 
-  /*
-    Swipe RIGHT
-    → PREVIOUS
-  */
+  // ---------------------------------
+  // Swipe RIGHT
+  // → PREVIOUS
+  // ---------------------------------
 
   movePrevious();
 }
@@ -516,17 +775,59 @@ function handleSwipe() {
 if (propertyGrid) {
   propertyGrid.setAttribute("tabindex", "0");
 
+  propertyGrid.setAttribute("role", "region");
+
+  propertyGrid.setAttribute("aria-label", "Property listings carousel");
+
   propertyGrid.addEventListener("keydown", (event) => {
+    // ---------------------------------
+    // Arrow Right
+    // ---------------------------------
+
     if (event.key === "ArrowRight") {
       event.preventDefault();
 
       moveNext();
+
+      return;
     }
+
+    // ---------------------------------
+    // Arrow Left
+    // ---------------------------------
 
     if (event.key === "ArrowLeft") {
       event.preventDefault();
 
       movePrevious();
+
+      return;
+    }
+
+    // ---------------------------------
+    // Home
+    // ---------------------------------
+
+    if (event.key === "Home") {
+      event.preventDefault();
+
+      if (!isAnimating) {
+        moveToIndex(0);
+      }
+
+      return;
+    }
+
+    // ---------------------------------
+    // End
+    // ---------------------------------
+
+    if (event.key === "End") {
+      event.preventDefault();
+
+      if (!isAnimating) {
+        moveToIndex(getMaxIndex());
+      }
     }
   });
 }
@@ -539,14 +840,23 @@ window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
 
   resizeTimer = setTimeout(() => {
-    /*
-          Stop animation while
-          recalculating layout.
-        */
+    // ---------------------------------
+    // Stop animation
+    // ---------------------------------
+
+    finishAnimation();
+
+    // ---------------------------------
+    // Remove transition temporarily
+    // ---------------------------------
 
     if (propertyGrid) {
       propertyGrid.classList.remove("carousel-animate");
     }
+
+    // ---------------------------------
+    // Recalculate everything
+    // ---------------------------------
 
     updateCarouselUI();
   }, 150);
@@ -561,8 +871,11 @@ function showLoadingState() {
     return;
   }
 
-  propertyGrid.innerHTML = `
+  propertyGrid.classList.remove("carousel-animate");
 
+  propertyGrid.style.transform = "translateX(0)";
+
+  propertyGrid.innerHTML = `
     <div class="empty-properties">
 
       <h3>
@@ -575,7 +888,6 @@ function showLoadingState() {
       </p>
 
     </div>
-
   `;
 
   if (pagination) {
@@ -592,8 +904,11 @@ function showEmptyState() {
     return;
   }
 
-  propertyGrid.innerHTML = `
+  propertyGrid.classList.remove("carousel-animate");
 
+  propertyGrid.style.transform = "translateX(0)";
+
+  propertyGrid.innerHTML = `
     <div class="empty-properties">
 
       <h3>
@@ -606,11 +921,22 @@ function showEmptyState() {
       </p>
 
     </div>
-
   `;
 
   if (pagination) {
     pagination.style.display = "none";
+  }
+
+  if (prevButton) {
+    prevButton.disabled = true;
+  }
+
+  if (nextButton) {
+    nextButton.disabled = true;
+  }
+
+  if (paginationDots) {
+    paginationDots.innerHTML = "";
   }
 }
 
@@ -623,8 +949,11 @@ function showErrorState() {
     return;
   }
 
-  propertyGrid.innerHTML = `
+  propertyGrid.classList.remove("carousel-animate");
 
+  propertyGrid.style.transform = "translateX(0)";
+
+  propertyGrid.innerHTML = `
     <div class="empty-properties">
 
       <h3>
@@ -646,12 +975,27 @@ function showErrorState() {
       </button>
 
     </div>
-
   `;
 
   if (pagination) {
     pagination.style.display = "none";
   }
+
+  if (prevButton) {
+    prevButton.disabled = true;
+  }
+
+  if (nextButton) {
+    nextButton.disabled = true;
+  }
+
+  if (paginationDots) {
+    paginationDots.innerHTML = "";
+  }
+
+  // ---------------------------------
+  // Retry button
+  // ---------------------------------
 
   const retryButton = document.getElementById("retry-properties");
 
@@ -670,32 +1014,55 @@ async function loadProperties() {
   }
 
   try {
-    // Show loading
+    // ---------------------------------
+    // Reset state
+    // ---------------------------------
+
+    finishAnimation();
+
+    currentIndex = 0;
+
+    allProperties = [];
+
+    // ---------------------------------
+    // Loading state
+    // ---------------------------------
+
     showLoadingState();
 
+    // ---------------------------------
     // Fetch properties
+    // ---------------------------------
+
     const response = await fetch(`${API_URL}/api/properties`);
 
-    /*
-      Check server response.
-    */
+    // ---------------------------------
+    // Check server response
+    // ---------------------------------
 
     if (!response.ok) {
       throw new Error(`Server returned ${response.status}`);
     }
 
-    /*
-      Convert response to JSON.
-    */
+    // ---------------------------------
+    // Parse JSON
+    // ---------------------------------
 
     const properties = await response.json();
 
-    /*
-      Make sure the API
-      returned an array.
-    */
+    // ---------------------------------
+    // Validate response
+    // ---------------------------------
 
-    if (!Array.isArray(properties) || properties.length === 0) {
+    if (!Array.isArray(properties)) {
+      throw new Error("Invalid properties response from server.");
+    }
+
+    // ---------------------------------
+    // Empty response
+    // ---------------------------------
+
+    if (properties.length === 0) {
       allProperties = [];
 
       currentIndex = 0;
@@ -705,9 +1072,9 @@ async function loadProperties() {
       return;
     }
 
-    /*
-      Store properties.
-    */
+    // ---------------------------------
+    // Store properties
+    // ---------------------------------
 
     allProperties = properties;
 
@@ -715,16 +1082,15 @@ async function loadProperties() {
 
     isAnimating = false;
 
-    /*
-      Render property cards.
-    */
+    // ---------------------------------
+    // Render cards
+    // ---------------------------------
 
     renderProperties();
 
-    /*
-      Update pagination,
-      buttons and position.
-    */
+    // ---------------------------------
+    // Update carousel
+    // ---------------------------------
 
     updateCarouselUI();
   } catch (error) {
@@ -734,7 +1100,7 @@ async function loadProperties() {
 
     currentIndex = 0;
 
-    isAnimating = false;
+    finishAnimation();
 
     showErrorState();
   }
