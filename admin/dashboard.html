@@ -6,8 +6,13 @@
 
     <title>Lexo Admin Dashboard</title>
 
+    <!-- Main desktop styles -->
     <link rel="stylesheet" href="../css/style.css" />
 
+    <!-- Responsive styles -->
+    <link rel="stylesheet" href="../css/responsive.css" />
+
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -17,111 +22,154 @@
   <body>
     <section class="dashboard">
       <div class="container">
-        <div class="dashboard-header">
-          <div>
+        <!-- =========================
+             DASHBOARD HEADER
+        ========================== -->
+
+        <header class="dashboard-header">
+          <div class="dashboard-header-content">
             <h1>Admin Dashboard</h1>
+
             <p>Manage all your properties from one place.</p>
           </div>
 
-          <button id="logoutBtn" class="logout-btn">Logout</button>
-        </div>
+          <button type="button" id="logoutBtn" class="logout-btn">
+            Logout
+          </button>
+        </header>
 
-        <!-- Dashboard Cards -->
+        <!-- =========================
+             DASHBOARD STATISTICS
+        ========================== -->
 
-        <div class="dashboard-cards">
+        <section class="dashboard-cards" aria-label="Property statistics">
           <div class="dashboard-card">
             <h3>Total Properties</h3>
+
             <h2 id="totalProperties">0</h2>
           </div>
 
           <div class="dashboard-card">
             <h3>Available</h3>
+
             <h2 id="availableProperties">0</h2>
           </div>
 
           <div class="dashboard-card">
             <h3>Sold</h3>
+
             <h2 id="soldProperties">0</h2>
           </div>
-        </div>
+        </section>
 
-        <!-- Add Property -->
+        <!-- =========================
+             ADD NEW PROPERTY
+        ========================== -->
 
-        <div class="recent-properties">
-          <h2>Add New Property</h2>
+        <section class="recent-properties add-property-section">
+          <div class="section-heading">
+            <h2>Add New Property</h2>
+          </div>
 
           <form id="property-form" enctype="multipart/form-data">
+            <!-- Property Title -->
+
             <input
               type="text"
               id="title"
               name="title"
               placeholder="Property Title"
+              autocomplete="off"
               required
             />
+
+            <!-- Property Price -->
 
             <input
               type="number"
               id="price"
               name="price"
               placeholder="Price (₦)"
+              min="0"
               required
             />
+
+            <!-- Location -->
 
             <input
               type="text"
               id="location"
               name="location"
               placeholder="Location"
+              autocomplete="address-level2"
               required
             />
+
+            <!-- Property Type -->
 
             <input
               type="text"
               id="type"
               name="type"
               placeholder="Property Type"
+              autocomplete="off"
               required
             />
+
+            <!-- Bedrooms -->
 
             <input
               type="number"
               id="bedrooms"
               name="bedrooms"
               placeholder="Bedrooms"
+              min="0"
               required
             />
+
+            <!-- Bathrooms -->
 
             <input
               type="number"
               id="bathrooms"
               name="bathrooms"
               placeholder="Bathrooms"
+              min="0"
               required
             />
 
-            <label for="image">Property Image</label>
+            <!-- Property Image -->
 
-            <input type="file" id="image" name="image" accept="image/*" />
+            <div class="property-image-field">
+              <label for="image"> Property Image </label>
 
-            <small id="image-note">
-              Leave this empty if you don't want to replace the current image
-              while editing.
-            </small>
+              <input type="file" id="image" name="image" accept="image/*" />
+
+              <small id="image-note">
+                Leave this empty if you don't want to replace the current image
+                while editing.
+              </small>
+            </div>
+
+            <!-- Status -->
 
             <select id="status" name="status">
               <option value="Available">Available</option>
+
               <option value="Sold">Sold</option>
             </select>
 
-            <!-- NEW -->
+            <!-- Featured Property -->
 
             <div class="featured-property">
-              <label class="featured-label">
+              <label class="featured-label" for="featured">
                 <input type="checkbox" id="featured" name="featured" />
 
-                Feature this property on the Homepage
+                <span> Feature this property on the Homepage </span>
               </label>
             </div>
+
+            <!-- Description -->
 
             <textarea
               id="description"
@@ -131,22 +179,37 @@
               required
             ></textarea>
 
+            <!-- Submit -->
+
             <button type="submit">Add Property</button>
           </form>
-        </div>
+        </section>
 
-        <!-- Manage Properties -->
+        <!-- =========================
+             MANAGE PROPERTIES
+        ========================== -->
 
-        <div class="recent-properties">
+        <section class="recent-properties manage-properties-section">
+          <!-- Table Header -->
+
           <div class="table-header">
-            <h2>Manage Properties</h2>
+            <div class="table-heading">
+              <h2>Manage Properties</h2>
+            </div>
+
+            <!-- Filters -->
 
             <div class="table-controls">
+              <!-- Search -->
+
               <input
                 type="text"
                 id="searchInput"
                 placeholder="🔍 Search by title, location or property type..."
+                autocomplete="off"
               />
+
+              <!-- Status Filter -->
 
               <select id="statusFilter">
                 <option value="All">All Status</option>
@@ -156,56 +219,78 @@
                 <option value="Sold">Sold</option>
               </select>
 
-              <!-- NEW -->
+              <!-- Featured Filter -->
 
               <select id="featuredFilter">
                 <option value="All">All Properties</option>
+
                 <option value="Featured">Featured Only</option>
+
                 <option value="Not Featured">Not Featured</option>
               </select>
 
+              <!-- Sort -->
+
               <select id="sortFilter">
                 <option value="newest">Newest First</option>
+
                 <option value="oldest">Oldest First</option>
+
                 <option value="highest">Highest Price</option>
+
                 <option value="lowest">Lowest Price</option>
+
                 <option value="az">A - Z</option>
+
                 <option value="za">Z - A</option>
               </select>
             </div>
           </div>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Image</th>
+          <!-- =========================
+               RESPONSIVE TABLE WRAPPER
+          ========================== -->
 
-                <th>Title</th>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Image</th>
 
-                <th>Location</th>
+                  <th scope="col">Title</th>
 
-                <th>Price</th>
+                  <th scope="col">Location</th>
 
-                <th>Status</th>
+                  <th scope="col">Price</th>
 
-                <th>Actions</th>
-              </tr>
-            </thead>
+                  <th scope="col">Status</th>
 
-            <tbody id="property-table-body"></tbody>
-          </table>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
 
-          <div class="pagination">
-            <button id="prevPage">Previous</button>
+              <tbody id="property-table-body">
+                <!-- Properties are inserted by dashboard.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- =========================
+               PAGINATION
+          ========================== -->
+
+          <div class="pagination" aria-label="Property pagination">
+            <button type="button" id="prevPage">Previous</button>
 
             <span id="pageInfo"> Page 1 </span>
 
-            <button id="nextPage">Next</button>
+            <button type="button" id="nextPage">Next</button>
           </div>
-        </div>
+        </section>
       </div>
     </section>
 
+    <!-- Dashboard JavaScript -->
     <script src="../js/dashboard.js"></script>
   </body>
 </html>

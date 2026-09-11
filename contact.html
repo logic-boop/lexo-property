@@ -1,137 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Contact Us | Lexo Property</title>
+    <title>Contact | Lexo Property</title>
 
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
 
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
+    <!-- =====================================================
+       NAVBAR
+       ===================================================== -->
+    <header class="navbar">
+      <div class="container nav-container">
+        <!-- LOGO -->
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="Lexo Property" />
 
-<header class="navbar">
-<div class="container nav-container">
+          <div class="logo-text">
+            <h2>LEXO PROPERTY</h2>
+          </div>
+        </a>
 
-<a href="index.html" class="logo">
-<img src="images/logo.png" alt="Lexo Property">
+        <!-- NAVIGATION -->
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="properties.html">Properties</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html" class="active">Contact</a>
+        </nav>
 
-<div class="logo-text">
-<h2>LEXO PROPERTY</h2>
-<p>Building Dreams, Creating Value</p>
-</div>
-</a>
+        <!-- DESKTOP CTA -->
+        <a href="properties.html" class="browse-btn desktop-browse-btn">
+          Browse Properties
+        </a>
 
-<nav class="nav-links">
-<a href="index.html">Home</a>
-<a href="properties.html">Properties</a>
-<a href="services.html">Services</a>
-<a href="about.html">About Us</a>
-<a href="contact.html">Contact</a>
-</nav>
+        <!-- MOBILE MENU BUTTON -->
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
 
-<a href="properties.html" class="browse-btn">
-Browse Properties
-</a>
+    <!-- =====================================================
+       CONTACT SECTION
+       ===================================================== -->
 
-</div>
-</header>
+    <main>
+      <section class="contact-section">
+        <div class="container">
+          <div class="contact-intro">
+            <span class="section-badge"> Get In Touch </span>
 
-<section class="page-hero">
+            <h1>Contact Lexo Property</h1>
 
-<div class="container">
+            <p>
+              Have questions about a property or need assistance? Our team is
+              ready to help you find the right property for your needs.
+            </p>
+          </div>
 
-<h1>Contact Us</h1>
+          <div class="contact-grid">
+            <!-- CONTACT INFORMATION -->
 
-<p>
-We would love to hear from you. Reach out to us today.
-</p>
+            <div class="contact-info">
+              <div class="contact-info-header">
+                <h2>Let's Talk</h2>
 
-</div>
+                <p>
+                  Whether you are looking to buy, rent, sell, or simply need
+                  more information, feel free to reach out to us.
+                </p>
+              </div>
 
-</section>
+              <div class="contact-items">
+                <div class="contact-item">
+                  <div class="contact-icon">📍</div>
 
-<section class="contact-section">
+                  <div>
+                    <h4>Address</h4>
 
-<div class="container">
+                    <p>Ibadan, Oyo State, Nigeria</p>
+                  </div>
+                </div>
 
-<div class="contact-grid">
+                <div class="contact-item">
+                  <div class="contact-icon">📞</div>
 
-<div class="contact-info">
+                  <div>
+                    <h4>Phone</h4>
 
-<h2>Get In Touch</h2>
+                    <p>
+                      <a href="tel:+2349079948293"> +234 907 994 8293 </a>
+                    </p>
+                  </div>
+                </div>
 
-<p>
-Have questions about a property? Need assistance?
-Our team is ready to help.
-</p>
+                <div class="contact-item">
+                  <div class="contact-icon">✉</div>
 
-<div class="contact-item">
-<h4>📍 Address</h4>
-<p>Ibadan, Oyo State, Nigeria</p>
-</div>
+                  <div>
+                    <h4>Email</h4>
 
-<div class="contact-item">
-<h4>📞 Phone</h4>
-<p>+234 907 994 8293</p>
-</div>
+                    <p>
+                      <a href="mailto:lexoproperty@gmail.com">
+                        lexoproperty@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-<div class="contact-item">
-<h4>✉ Email</h4>
-<p>lexoproperty@gmail.com</p>
-</div>
-</div>
+            <!-- CONTACT FORM -->
 
-</div>
+            <div class="contact-form">
+              <div class="contact-form-header">
+                <h2>Send Us a Message</h2>
 
-<div class="contact-form">
+                <p>
+                  Fill out the form below and we'll get back to you as soon as
+                  possible.
+                </p>
+              </div>
 
-<form>
+              <form>
+                <div class="form-group">
+                  <label for="name"> Your Name </label>
 
-<input
-type="text"
-placeholder="Your Name"
-required
->
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
 
-<input
-type="email"
-placeholder="Your Email"
-required
->
+                <div class="form-group">
+                  <label for="email"> Your Email </label>
 
-<input
-type="text"
-placeholder="Subject"
-required
->
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
 
-<textarea
-placeholder="Your Message"
-rows="6"
-required
-></textarea>
+                <div class="form-group">
+                  <label for="subject"> Subject </label>
 
-<button type="submit" class="submit-btn">
-Send Message
-</button>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="What can we help you with?"
+                    required
+                  />
+                </div>
 
-</form>
+                <div class="form-group">
+                  <label for="message"> Your Message </label>
 
-</div>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your message here..."
+                    rows="6"
+                    required
+                  ></textarea>
+                </div>
 
-</div>
+                <button type="submit" class="submit-btn">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-</div>
+    <!-- =====================================================
+       FOOTER
+       ===================================================== -->
 
-</section>
-
-<footer class="footer">
+    <footer class="footer">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
@@ -148,18 +220,24 @@ Send Message
           <div class="footer-links">
             <h4>Quick Links</h4>
 
-            <a href="./index.html">Home</a>
-            <a href="./properties.html">Properties</a>
-            <a href="./services.html">Services</a>
-            <a href="./about.html">About Us</a>
-            <a href="./contact.html">Contact</a>
+            <a href="./index.html"> Home </a>
+
+            <a href="./properties.html"> Properties </a>
+
+            <a href="./services.html"> Services </a>
+
+            <a href="./about.html"> About Us </a>
+
+            <a href="./contact.html"> Contact </a>
           </div>
 
           <div class="footer-contact">
             <h4>Contact Info</h4>
 
             <p>📍 Ibadan, Oyo State</p>
+
             <p>📞 +234 907 994 8293</p>
+
             <p>✉ lexoproperty@gmail.com</p>
           </div>
         </div>
@@ -169,5 +247,33 @@ Send Message
         </div>
       </div>
     </footer>
-</body>
+
+    <!-- =====================================================
+       MOBILE NAVIGATION
+       ===================================================== -->
+
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          const isActive = navLinks.classList.toggle("active");
+
+          menuToggle.classList.toggle("active", isActive);
+
+          menuToggle.setAttribute("aria-expanded", isActive ? "true" : "false");
+        });
+
+        navLinks.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuToggle.classList.remove("active");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+    </script>
+  </body>
 </html>
