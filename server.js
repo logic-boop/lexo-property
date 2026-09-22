@@ -8,6 +8,7 @@ const connectDB = require("./config/db");
 // Routes
 const propertyRoutes = require("./routes/propertyRoutes");
 const authRoutes = require("./routes/authRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 
 dotenv.config();
 
@@ -52,6 +53,7 @@ app.use("/api/properties", propertyRoutes);
 
 // Authentication Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/contact", contactRoutes);
 
 // ==========================
 // START SERVER

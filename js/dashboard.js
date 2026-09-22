@@ -24,7 +24,7 @@ if (logoutBtn) {
 // LEXO PROPERTY ADMIN DASHBOARD
 // ===============================
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = API_BASE_URL;
 const API_URL = `${BASE_URL}/api/properties`;
 
 // ===============================

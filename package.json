@@ -24,6 +24,7 @@
     "express": "^5.2.1",
     "fs-extra": "^11.4.0",
     "mongoose": "^9.9.0",
-    "multer": "^2.2.0"
+    "multer": "^2.2.0",
+    "nodemailer": "^10.0.10"
   }
 }

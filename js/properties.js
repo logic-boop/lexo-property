@@ -3,7 +3,7 @@
 // FEATURED PROPERTIES CAROUSEL
 // ===================================
 
-const API_URL = "http://localhost:5000";
+const API_URL = API_BASE_URL;
 
 // ===================================
 // DOM ELEMENTS
