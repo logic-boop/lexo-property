@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const upload = require("../middleware/upload");
+const protect = require("../middleware/authMiddleware");
 
 const {
   getProperties,
@@ -11,19 +12,13 @@ const {
   deleteProperty,
 } = require("../controllers/propertyController");
 
-// GET all properties
+// PUBLIC
 router.get("/", getProperties);
-
-// GET single property
 router.get("/:id", getProperty);
 
-// CREATE property
-router.post("/", upload.single("image"), createProperty);
-
-// UPDATE property
-router.put("/:id", upload.single("image"), updateProperty);
-
-// DELETE property
-router.delete("/:id", deleteProperty);
+// PROTECTED — ADMIN ONLY
+router.post("/", protect, upload.single("image"), createProperty);
+router.put("/:id", protect, upload.single("image"), updateProperty);
+router.delete("/:id", protect, deleteProperty);
 
 module.exports = router;
