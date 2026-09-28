@@ -15,6 +15,7 @@ if (logoutBtn) {
     if (!confirmed) return;
 
     localStorage.removeItem("lexoAdmin");
+    localStorage.removeItem("lexoAdminToken");
 
     window.location.href = "login.html";
   });
@@ -26,6 +27,7 @@ if (logoutBtn) {
 
 const BASE_URL = API_BASE_URL;
 const API_URL = `${BASE_URL}/api/properties`;
+const ADMIN_TOKEN = localStorage.getItem("lexoAdminToken");
 
 // ===============================
 // DASHBOARD ELEMENTS
@@ -136,7 +138,6 @@ async function saveProperty(e) {
 
   const formData = new FormData(propertyForm);
 
-  // IMPORTANT:
   // Backend expects "true" or "false"
   // NOT "on"
   const featuredCheckbox = document.getElementById("featured");
@@ -155,11 +156,21 @@ async function saveProperty(e) {
 
     const response = await fetch(url, {
       method,
+      headers: {
+        Authorization: `Bearer ${ADMIN_TOKEN}`,
+      },
       body: formData,
     });
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);
+
+      if (response.status === 401) {
+        localStorage.removeItem("lexoAdmin");
+        localStorage.removeItem("lexoAdminToken");
+        window.location.href = "login.html";
+        return;
+      }
 
       throw new Error(
         errorData?.message || "Failed to save property."
@@ -274,10 +285,20 @@ async function deleteProperty(id) {
   try {
     const response = await fetch(`${API_URL}/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${ADMIN_TOKEN}`,
+      },
     });
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);
+
+      if (response.status === 401) {
+        localStorage.removeItem("lexoAdmin");
+        localStorage.removeItem("lexoAdminToken");
+        window.location.href = "login.html";
+        return;
+      }
 
       throw new Error(
         errorData?.message || "Failed to delete property."
