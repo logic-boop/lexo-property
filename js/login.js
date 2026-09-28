@@ -5,55 +5,44 @@ const loginBtn = document.getElementById("loginBtn");
 const loginMessage = document.getElementById("loginMessage");
 
 loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    e.preventDefault();
+  loginMessage.textContent = "";
 
-    loginMessage.textContent = "";
+  loginBtn.disabled = true;
+  loginBtn.textContent = "Logging in...";
 
-    loginBtn.disabled = true;
-    loginBtn.textContent = "Logging in...";
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
 
-    try {
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-        const response = await fetch(API_URL, {
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
 
-            method: "POST",
+    const data = await response.json();
 
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                email,
-                password
-            })
-
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(data.message);
-
-        }
-
-        localStorage.setItem("lexoAdmin", "true");
-
-        window.location.href = "/admin/dashboard.html";
-
-    } catch (error) {
-
-        loginMessage.textContent = error.message;
-
-    } finally {
-
-        loginBtn.disabled = false;
-        loginBtn.textContent = "Login";
-
+    if (!response.ok) {
+      throw new Error(data.message);
     }
 
+    localStorage.setItem("lexoAdmin", "true");
+    localStorage.setItem("lexoAdminToken", data.token);
+
+    window.location.href = "/admin/dashboard.html";
+  } catch (error) {
+    loginMessage.textContent = error.message;
+  } finally {
+    loginBtn.disabled = false;
+    loginBtn.textContent = "Login";
+  }
 });
