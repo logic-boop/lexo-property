@@ -618,7 +618,7 @@ async function loadHomepageProperties() {
       Fetch properties from backend.
     */
 
-    const response = await fetch(`${API_URL}/api/properties`);
+    const response = await fetch(`${API_URL}/api/properties?featured=true`);
 
     if (!response.ok) {
       throw new Error(`Server returned ${response.status}`);

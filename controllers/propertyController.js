@@ -30,7 +30,13 @@ const getProperties = async (req, res) => {
 
     // Bedrooms
     if (req.query.bedrooms) {
-      query.bedrooms = Number(req.query.bedrooms);
+      const bedrooms = Number(req.query.bedrooms);
+
+      if (bedrooms === 5) {
+        query.bedrooms = { $gte: 5 };
+      } else {
+        query.bedrooms = bedrooms;
+      }
     }
 
     // Minimum price
