@@ -21,7 +21,11 @@ const app = express();
 // MIDDLEWARE
 // ==========================
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:5500",
+  }),
+);
 
 app.use(express.json());
 
@@ -31,10 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 // STATIC FILES
 // ==========================
 
-app.use(
-  "/uploads",
-  express.static(path.join(__dirname, "public/uploads"))
-);
+app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 
 // ==========================
 // HOME ROUTE
