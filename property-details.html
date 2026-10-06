@@ -1,53 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Property Details | Lexo Property</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
 
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/responsive.css" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-- ==========================
          HEADER
     =========================== -->
 
-    <header class="page-header">
+    <header class="navbar" id="navbar">
+      <div class="container nav-container">
+        <!-- Logo -->
 
-        <div class="container">
+        <a href="./index.html" class="logo" aria-label="Lexo Property Home">
+          <img src="images/logo.png" alt="Lexo Property Logo" />
 
-            <a href="index.html" class="logo">
-                <h2>LEXO PROPERTY</h2>
-            </a>
+          <div class="logo-text">
+            <h2>LEXO PROPERTY</h2>
+          </div>
+        </a>
 
-            <nav>
+        <!-- Navigation -->
 
-                <a href="index.html">Home</a>
+        <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+          <a href="./index.html">Home</a>
 
-                <a href="properties.html">Properties</a>
+          <a href="./properties.html">Properties</a>
 
-                <a href="services.html">Services</a>
+          <a href="./services.html">Services</a>
 
-                <a href="about.html">About</a>
+          <a href="./about.html">About Us</a>
 
-                <a href="contact.html">Contact</a>
+          <a href="./contact.html">Contact</a>
+        </nav>
 
-            </nav>
+        <!-- Desktop Browse Button -->
 
-        </div>
+        <a href="./properties.html" class="browse-btn desktop-browse-btn">
+          Browse Properties
+        </a>
 
+        <!-- Mobile Menu Button -->
+
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </header>
 
     <!-- ==========================
@@ -55,173 +76,111 @@
     =========================== -->
 
     <section id="loadingState" class="loading-state">
-
-        <h2>Loading Property...</h2>
-
+      <h2>Loading Property...</h2>
     </section>
 
     <!-- ==========================
          NOT FOUND
     =========================== -->
 
-    <section id="notFound" class="not-found" style="display:none;">
+    <section id="notFound" class="not-found" style="display: none">
+      <h1>404</h1>
 
-        <h1>404</h1>
+      <h2>Property Not Found</h2>
 
-        <h2>Property Not Found</h2>
+      <p>The property you are looking for no longer exists.</p>
 
-        <p>
-
-            The property you are looking for no longer exists.
-
-        </p>
-
-        <a href="properties.html" class="property-btn">
-
-            Browse Properties
-
-        </a>
-
+      <a href="properties.html" class="property-btn"> Browse Properties </a>
     </section>
 
     <!-- ==========================
          PROPERTY DETAILS
     =========================== -->
 
-    <section id="propertySection"
-        class="property-details-page"
-        style="display:none;">
-
-        <div class="container">
-
-            <div class="property-image">
-
-                <img
-                    id="propertyImage"
-                    src=""
-                    alt="Property Image">
-
-            </div>
-
-            <div class="property-info">
-
-                <span
-                    id="propertyStatus"
-                    class="status">
-
-                </span>
-
-                <h1 id="propertyTitle"></h1>
-
-                <h2 id="propertyPrice"></h2>
-
-                <p
-                    id="propertyLocation"
-                    class="property-location">
-
-                </p>
-
-                <!-- Changed from property-features to details-features -->
-
-                <div class="details-features">
-
-                    <div>
-
-                        🛏
-
-                        <span id="propertyBedrooms"></span>
-
-                        Bedrooms
-
-                    </div>
-
-                    <div>
-
-                        🚿
-
-                        <span id="propertyBathrooms"></span>
-
-                        Bathrooms
-
-                    </div>
-
-                    <div>
-
-                        🏠
-
-                        <span id="propertyType"></span>
-
-                        Property Type
-
-                    </div>
-
-                </div>
-
-                <div class="property-description">
-
-                    <h3>Description</h3>
-
-                    <p id="propertyDescription"></p>
-
-                </div>
-
-                <!-- Contact Buttons -->
-
-                <div class="property-actions">
-
-                    <a
-                        href="tel:+2349079948293"
-                        class="call-btn">
-
-                        📞 Call Agent
-
-                    </a>
-
-                    <a
-                        href="https://wa.me/2349079948293"
-                        target="_blank"
-                        class="whatsapp-btn">
-
-                        💬 WhatsApp
-
-                    </a>
-
-                    <a
-                        href="mailto:lexoproperty@gmail.com"
-                        class="email-btn">
-
-                        ✉ Email
-
-                    </a>
-
-                </div>
-
-            </div>
-
+    <section
+      id="propertySection"
+      class="property-details-page"
+      style="display: none"
+    >
+      <div class="container">
+        <div class="property-image">
+          <img id="propertyImage" src="" alt="Property Image" />
         </div>
 
+        <div class="property-info">
+          <span id="propertyStatus" class="status"> </span>
+
+          <h1 id="propertyTitle"></h1>
+
+          <h2 id="propertyPrice"></h2>
+
+          <p id="propertyLocation" class="property-location"></p>
+
+          <!-- Changed from property-features to details-features -->
+
+          <div class="details-features">
+            <div>
+              🛏
+
+              <span id="propertyBedrooms"></span>
+
+              Bedrooms
+            </div>
+
+            <div>
+              🚿
+
+              <span id="propertyBathrooms"></span>
+
+              Bathrooms
+            </div>
+
+            <div>
+              🏠
+
+              <span id="propertyType"></span>
+
+              Property Type
+            </div>
+          </div>
+
+          <div class="property-description">
+            <h3>Description</h3>
+
+            <p id="propertyDescription"></p>
+          </div>
+
+          <!-- Contact Buttons -->
+
+          <div class="property-actions">
+            <a href="tel:+2349079948293" class="call-btn"> 📞 Call Agent </a>
+
+            <a
+              href="https://wa.me/2349079948293"
+              target="_blank"
+              class="whatsapp-btn"
+            >
+              💬 WhatsApp
+            </a>
+
+            <a href="mailto:lexoproperty@gmail.com" class="email-btn">
+              ✉ Email
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ==========================
          RELATED PROPERTIES
     =========================== -->
 
-    <section
-        id="relatedPropertiesSection"
-        class="related-properties">
+    <section id="relatedPropertiesSection" class="related-properties">
+      <div class="container">
+        <h2>Related Properties</h2>
 
-        <div class="container">
-
-            <h2>Related Properties</h2>
-
-            <div
-                id="relatedPropertiesGrid"
-                class="property-grid">
-
-            </div>
-
-        </div>
-
+        <div id="relatedPropertiesGrid" class="property-grid"></div>
+      </div>
     </section>
 
     <!-- ==========================
@@ -229,71 +188,49 @@
     =========================== -->
 
     <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h3>LEXO PROPERTY</h3>
 
-        <div class="container">
+            <p>
+              Helping Nigerians find affordable and trusted properties across
+              the country.
+            </p>
+          </div>
 
-            <div class="footer-grid">
+          <div class="footer-links">
+            <h4>Quick Links</h4>
 
-                <div class="footer-brand">
+            <a href="index.html">Home</a>
 
-                    <h3>LEXO PROPERTY</h3>
+            <a href="properties.html">Properties</a>
 
-                    <p>
+            <a href="services.html">Services</a>
 
-                        Helping Nigerians find affordable and trusted
-                        properties across the country.
+            <a href="about.html">About</a>
 
-                    </p>
+            <a href="contact.html">Contact</a>
+          </div>
 
-                </div>
+          <div class="footer-contact">
+            <h4>Contact Info</h4>
 
-                <div class="footer-links">
+            <p>📍 Ibadan, Oyo State</p>
 
-                    <h4>Quick Links</h4>
+            <p>📞 +234 907 994 8293</p>
 
-                    <a href="index.html">Home</a>
-
-                    <a href="properties.html">Properties</a>
-
-                    <a href="services.html">Services</a>
-
-                    <a href="about.html">About</a>
-
-                    <a href="contact.html">Contact</a>
-
-                </div>
-
-                <div class="footer-contact">
-
-                    <h4>Contact Info</h4>
-
-                    <p>📍 Ibadan, Oyo State</p>
-
-                    <p>📞 +234 907 994 8293</p>
-
-                    <p>✉ lexoproperty@gmail.com</p>
-
-                </div>
-
-            </div>
-
-            <div class="footer-bottom">
-
-                <p>
-
-                    © 2026 Lexo Property. All Rights Reserved.
-
-                </p>
-
-            </div>
-
+            <p>✉ lexoproperty@gmail.com</p>
+          </div>
         </div>
 
+        <div class="footer-bottom">
+          <p>© 2026 Lexo Property. All Rights Reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="/js/config.js"></script>
     <script src="/js/property-details.js"></script>
-
-</body>
-
+  </body>
 </html>
