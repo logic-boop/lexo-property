@@ -890,7 +890,7 @@ textarea {
 
   width: 100%;
 
-  transform: none !important;
+  transform: none;
 
   overflow: visible;
 
@@ -3122,11 +3122,11 @@ th {
 
     border-radius: 20px;
 
-    transform: none !important;
+    transform: none;
   }
 
   .property-card:hover {
-    transform: none !important;
+    transform: none;
   }
 
   .property-card img {
@@ -5053,4 +5053,57 @@ th {
     font-size: 0.9rem;
   }
 
+}
+/* =========================================================
+   HOMEPAGE FEATURED PROPERTIES - DESKTOP CAROUSEL FIX
+   ========================================================= */
+
+@media (min-width: 992px) {
+  .featured-properties .property-carousel {
+    overflow: hidden;
+  }
+
+  .featured-properties .property-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 25px;
+    width: 100%;
+    overflow: visible;
+    transition: transform 0.45s ease;
+    will-change: transform;
+  }
+
+  .featured-properties .property-card {
+    flex: 0 0 calc((100% - 50px) / 3);
+    width: calc((100% - 50px) / 3);
+    min-width: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .featured-properties .property-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    width: 100%;
+    overflow: visible;
+  }
+
+  .featured-properties .property-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+    width: calc((100% - 20px) / 2);
+    min-width: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-properties .property-grid {
+    gap: 15px;
+  }
+
+  .featured-properties .property-card {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+  }
 }

@@ -151,26 +151,21 @@ function updateCarouselPosition(animate = true) {
     propertyGrid.classList.remove("carousel-animate");
   }
 
-  const visibleCards = getVisibleCards();
+  const cards = propertyGrid.querySelectorAll(".property-card");
 
-  /*
-    The CSS property cards use:
+  if (!cards.length) {
+    return;
+  }
 
-    Desktop → 3 cards
-    Tablet  → 2 cards
-    Mobile  → 1 card
+  const targetCard = cards[currentIndex];
 
-    Each card therefore occupies:
-    Desktop → 33.333%
-    Tablet  → 50%
-    Mobile  → 100%
-  */
+  if (!targetCard) {
+    return;
+  }
 
-  const cardWidth = 100 / visibleCards;
+  const translateAmount = targetCard.offsetLeft;
 
-  const translateAmount = currentIndex * cardWidth;
-
-  propertyGrid.style.transform = `translateX(-${translateAmount}%)`;
+  propertyGrid.style.transform = `translateX(-${translateAmount}px)`;
 }
 
 // ===================================
