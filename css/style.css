@@ -5107,3 +5107,431 @@ th {
     min-width: 100%;
   }
 }
+
+/* Property details: match the actual HTML feature container */
+.property-details-page .details-features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 30px 0;
+}
+
+.property-details-page .details-features > div {
+  min-width: 0;
+  padding: 20px 12px;
+  background: #f9fafb;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.property-details-page .details-features span {
+  display: block;
+  margin: 8px 0;
+  color: var(--primary-green);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .property-details-page {
+    padding: 40px 0;
+  }
+
+  .property-details-page .container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .property-details-page .details-features {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .property-details-page .details-features > div {
+    padding: 14px 6px;
+    font-size: 0.85rem;
+    overflow-wrap: anywhere;
+  }
+
+  .property-details-page .details-features span {
+    font-size: 1.2rem;
+  }
+
+  .property-image img {
+    height: auto;
+    max-height: 360px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 420px) {
+  .property-details-page .details-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* PROPERTY DETAILS — RESPONSIVE REFINEMENT */
+.property-details-page,
+.property-details-page * {
+  box-sizing: border-box;
+}
+
+.property-details-page .container {
+  width: min(100% - 40px, 1200px);
+  margin-inline: auto;
+  min-width: 0;
+}
+
+.property-details-page .property-image,
+.property-details-page .property-info {
+  min-width: 0;
+  width: 100%;
+}
+
+.property-details-page .property-image img {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 42vw, 520px);
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.property-details-page .property-info h1,
+.property-details-page .property-info h2,
+.property-details-page .property-location,
+.property-details-page #propertyDescription {
+  overflow-wrap: anywhere;
+}
+
+.property-details-page .details-features {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.property-details-page .details-features > div {
+  overflow-wrap: anywhere;
+}
+
+.property-details-page .property-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.property-details-page .property-actions a {
+  min-width: 0;
+  max-width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .property-details-page .container {
+    width: min(100% - 32px, 600px);
+  }
+
+  .property-details-page .container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .property-details-page .property-image img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    max-height: 380px;
+  }
+
+  .property-details-page .property-info h1 {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+    line-height: 1.25;
+  }
+
+  .property-details-page .property-info h2 {
+    font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+  }
+
+  .property-details-page .details-features {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .property-details-page .details-features > div {
+    padding: 14px 6px;
+    font-size: 0.82rem;
+  }
+
+  .property-details-page .property-actions {
+    flex-direction: column;
+  }
+
+  .property-details-page .property-actions a {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .property-details-page .container {
+    width: calc(100% - 24px);
+  }
+
+  .property-details-page .details-features {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .property-details-page .details-features > div {
+    padding: 12px 3px;
+    font-size: 0.72rem;
+  }
+
+  .property-details-page .details-features span {
+    font-size: 1.1rem;
+  }
+}
+
+/* PROPERTY DETAILS IMAGE CAROUSEL */
+.property-image-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.property-image-carousel > img {
+  display: block;
+  width: 100%;
+}
+
+.image-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(17, 24, 39, 0.78);
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.image-carousel-btn.previous { left: 14px; }
+.image-carousel-btn.next { right: 14px; }
+.image-carousel-btn[hidden],
+.image-carousel-indicators[hidden] { display: none; }
+
+.image-carousel-indicators {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.image-carousel-indicator {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+}
+
+.image-carousel-indicator.active {
+  background: var(--primary-green);
+  transform: scale(1.2);
+}
+
+/* RELATED PROPERTIES PAGINATION */
+.related-properties-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 35px;
+}
+
+.related-properties-pagination:empty {
+  display: none;
+}
+
+.related-properties-pagination button {
+  min-width: 40px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #111827;
+  cursor: pointer;
+}
+
+.related-properties-pagination button.active {
+  border-color: var(--primary-green);
+  background: var(--primary-green);
+  color: #fff;
+}
+
+.related-properties-pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+@media (max-width: 480px) {
+  .image-carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .image-carousel-btn.previous { left: 10px; }
+  .image-carousel-btn.next { right: 10px; }
+
+  .related-properties-pagination {
+    gap: 6px;
+    margin-top: 24px;
+  }
+
+  .related-properties-pagination button {
+    min-width: 36px;
+    min-height: 36px;
+    padding: 7px 9px;
+  }
+}
+
+/* RELATED PROPERTIES SLIDING CAROUSEL */
+.related-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.related-carousel-viewport {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  padding: 8px 2px 24px;
+}
+
+.related-carousel-track {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 24px;
+  width: 100%;
+  overflow: visible;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.related-carousel-track .property-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  width: calc((100% - 48px) / 3);
+  min-width: 0;
+}
+
+.related-carousel-btn {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--primary-green);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.related-carousel-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.related-carousel-btn[hidden] {
+  display: none;
+}
+
+.related-properties-pagination {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.related-carousel-status {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .related-carousel-track {
+    gap: 16px;
+  }
+
+  .related-carousel-track .property-card {
+    flex-basis: calc((100% - 16px) / 2);
+    width: calc((100% - 16px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .related-carousel {
+    gap: 6px;
+  }
+
+  .related-carousel-track .property-card {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .related-carousel-btn {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+}
+
+/* FIX: CONSISTENT SPACING BETWEEN RELATED PROPERTY CARDS */
+.related-carousel-viewport {
+  overflow: hidden;
+  min-width: 0;
+  padding: 10px 4px 28px;
+}
+
+.related-carousel-track {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: nowrap !important;
+  column-gap: 24px !important;
+  row-gap: 24px;
+  width: 100%;
+}
+
+.related-carousel-track > .property-card {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .related-carousel-track {
+    column-gap: 18px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .related-carousel-track {
+    column-gap: 14px !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .related-carousel-track > .property-card {
+    flex-basis: calc((100% - 18px) / 2);
+    width: calc((100% - 18px) / 2);
+  }
+}

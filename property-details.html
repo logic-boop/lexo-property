@@ -103,8 +103,11 @@
       style="display: none"
     >
       <div class="container">
-        <div class="property-image">
+        <div class="property-image property-image-carousel">
           <img id="propertyImage" src="" alt="Property Image" />
+          <button type="button" id="previousPropertyImage" class="image-carousel-btn previous" aria-label="Previous property image">&#10094;</button>
+          <button type="button" id="nextPropertyImage" class="image-carousel-btn next" aria-label="Next property image">&#10095;</button>
+          <div id="propertyImageIndicators" class="image-carousel-indicators" aria-label="Property image indicators"></div>
         </div>
 
         <div class="property-info">
@@ -179,7 +182,14 @@
       <div class="container">
         <h2>Related Properties</h2>
 
-        <div id="relatedPropertiesGrid" class="property-grid"></div>
+        <div class="related-carousel">
+          <button type="button" id="relatedPrev" class="related-carousel-btn" aria-label="Previous properties">&#10094;</button>
+          <div class="related-carousel-viewport">
+            <div id="relatedPropertiesGrid" class="property-grid related-carousel-track"></div>
+          </div>
+          <button type="button" id="relatedNext" class="related-carousel-btn" aria-label="Next properties">&#10095;</button>
+        </div>
+        <div id="relatedPropertiesPagination" class="related-properties-pagination" aria-label="Related properties pagination"></div>
       </div>
     </section>
 
@@ -232,5 +242,6 @@
 
     <script src="/js/config.js"></script>
     <script src="/js/property-details.js"></script>
+    <script src="/js/navbar.js"></script>
   </body>
 </html>
